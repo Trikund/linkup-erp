@@ -14,28 +14,27 @@ interface SchoolLayoutProps {
   children: React.ReactNode;
 }
 
-export function SchoolLayout({ role, user, title, description, children }: SchoolLayoutProps) {
+export function SchoolLayout({ role, user, title, children }: SchoolLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50/50 flex">
+    <div className="min-h-screen bg-[#f0f4f8] flex font-sans">
       <SchoolSidebar 
         role={role} 
         isOpen={sidebarOpen} 
         onClose={() => setSidebarOpen(false)} 
       />
       
-      <div className="flex-1 flex flex-col min-w-0 lg:pl-64 transition-all duration-300">
+      <div className="flex-1 flex flex-col min-w-0 lg:pl-[260px] transition-all duration-300">
         <SchoolTopbar 
           role={role} 
           user={user} 
           onOpenSidebar={() => setSidebarOpen(true)}
           title={title}
-          description={description}
         />
         
-        <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-x-hidden">
-          <div className="max-w-7xl mx-auto">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-x-hidden relative">
+          <div className="max-w-7xl mx-auto space-y-6">
             {children}
           </div>
         </main>

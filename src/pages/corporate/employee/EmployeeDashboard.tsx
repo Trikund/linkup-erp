@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CorporateLayout } from '../../../components/corporate/layout/CorporateLayout';
 import { KpiCard } from '../../../components/corporate/common/KpiCard';
-import { CheckCircle2, Clock, Briefcase, Calendar, AlertCircle, Fingerprint } from 'lucide-react';
+import { CheckCircle2, Clock, Briefcase, Calendar, AlertCircle, Fingerprint, CheckSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function EmployeeDashboard() {
@@ -139,4 +139,4 @@ export function EmployeeDashboard() {
 }
 
 // Needed for the dashboard icons
-import { CheckSquare } from 'lucide-react';
+

@@ -152,7 +152,8 @@ export function Landing() {
   );
 }
 
-function StatItem({ icon: Icon, line1, line2, color }: any) {
+interface StatItemProps { icon: React.ElementType; line1: string; line2: string; color: string; }
+function StatItem({ icon: Icon, line1, line2, color }: StatItemProps) {
   return (
     <div className="flex flex-col items-center text-center flex-1">
       <Icon size={20} strokeWidth={2.5} className={`${color} mb-2`} />
@@ -161,7 +162,8 @@ function StatItem({ icon: Icon, line1, line2, color }: any) {
   );
 }
 
-function OrgCard({ title, description, icon: Icon, image, href, accentColor }: any) {
+interface OrgCardProps { title: string; description: string; icon: React.ElementType; image: string; href: string; accentColor: 'blue' | 'violet'; }
+function OrgCard({ title, description, icon: Icon, image, href, accentColor }: OrgCardProps) {
   const textAccents: Record<string, string> = {
     blue: "text-linkup-blue",
     violet: "text-[#7c3aed]"
@@ -237,3 +239,4 @@ function OrgCard({ title, description, icon: Icon, image, href, accentColor }: a
     </Link>
   );
 }
+

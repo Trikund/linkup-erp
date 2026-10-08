@@ -1,138 +1,178 @@
 import React from 'react';
 import { SchoolLayout } from '../../../components/layout/SchoolLayout';
-import { USERS, MOCK_ATTENDANCE, MOCK_TIMETABLE, MOCK_ASSIGNMENTS, MOCK_EXAMS } from '../../../data/mockData';
-import { GlassCard } from '../../../components/common/GlassCard';
+import { USERS } from '../../../data/mockData';
 import { CalendarCheck, BookOpen, ClipboardList, FileCheck, ArrowRight, TrendingUp } from 'lucide-react';
 
 export function StudentDashboard() {
   const user = USERS.student;
 
   return (
-    <SchoolLayout 
-      role="student" 
-      user={user}
-      title={`Good Morning, ${user.name.split(' ')[0]} 👋`}
-      description="Here's what's happening with your learning today."
-    >
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <KPICard icon={CalendarCheck} label="Attendance" value="92%" trend="+3.2% this month" />
-        <KPICard icon={BookOpen} label="Course Progress" value="78%" trend="On track" />
-        <KPICard icon={ClipboardList} label="Assignments" value="8 / 10" trend="2 Pending" alert />
-        <KPICard icon={FileCheck} label="Upcoming Exams" value="2" trend="Next: 18 Oct" />
-      </div>
-
-      <div className="grid lg:grid-cols-3 gap-8">
-        {/* Left Column */}
-        <div className="lg:col-span-2 space-y-8">
-          
-          {/* Today's Schedule */}
-          <GlassCard className="p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-bold text-slate-900">Today's Schedule</h2>
-              <button className="text-sm font-medium text-linkup-blue hover:underline">View Timetable</button>
+    <SchoolLayout role="student" user={user}>
+      
+      {/* Top Banner */}
+      <div className="flex flex-col md:flex-row gap-6 items-stretch mb-2">
+        <div className="flex-1 bg-gradient-to-r from-[#2563eb] to-[#38bdf8] rounded-3xl p-8 text-white relative overflow-hidden shadow-lg shadow-blue-500/20">
+          <div className="relative z-10 max-w-lg">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold mb-4">
+              👋 Good Morning, {user.name.split(' ')[0]}!
             </div>
-            <div className="space-y-4">
-              {MOCK_TIMETABLE.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4 p-4 rounded-xl border border-slate-100 bg-white/50 hover:bg-white/80 transition-colors">
-                  <div className="w-20 text-sm font-bold text-slate-700">{item.time}</div>
-                  <div className="w-1 h-12 bg-linkup-blue/20 rounded-full" />
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-slate-900">{item.subject}</h4>
-                    <p className="text-sm text-slate-500">{item.teacher} • {item.room}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
-
-          {/* Pending Assignments */}
-          <GlassCard className="p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-bold text-slate-900">Pending Assignments</h2>
-              <button className="text-sm font-medium text-linkup-blue hover:underline">View All</button>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {MOCK_ASSIGNMENTS.map((item) => (
-                <div key={item.id} className="p-4 rounded-xl border border-slate-100 bg-white/50 hover:bg-white/80 transition-colors">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs font-semibold px-2 py-1 bg-linkup-blue/10 text-linkup-blue rounded-md">
-                      {item.subject}
-                    </span>
-                    <span className={`text-xs font-semibold px-2 py-1 rounded-md ${item.status === 'Submitted' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
-                      {item.status}
-                    </span>
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-1">{item.title}</h4>
-                  <p className="text-sm text-slate-500 mb-4">Due: {item.due}</p>
-                  <button className="text-sm font-medium text-linkup-blue flex items-center gap-1 group">
-                    {item.status === 'Submitted' ? 'View' : 'Submit'} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
+            <h1 className="text-3xl md:text-4xl font-black mb-3 leading-tight text-white drop-shadow-md">
+              Keep Learning,<br />Keep Growing!
+            </h1>
+            <p className="text-blue-100 mb-6 font-medium max-w-sm text-sm">
+              Attend classes, complete assignments and stay on track for your goals.
+            </p>
+            <button className="bg-white text-blue-600 hover:bg-blue-50 px-5 py-2.5 rounded-xl text-sm font-bold shadow-md transition-colors inline-flex items-center gap-2">
+              View My Progress <ArrowRight size={16} />
+            </button>
+          </div>
+          {/* Decorative Elements */}
+          <div className="absolute right-0 bottom-0 top-0 w-1/2 bg-gradient-to-l from-white/10 to-transparent skew-x-12 translate-x-20"></div>
+          <div className="absolute -right-4 -bottom-4 text-[140px] opacity-90 drop-shadow-2xl translate-y-8">👨‍🎓</div>
         </div>
 
-        {/* Right Column */}
-        <div className="space-y-8">
-          {/* Attendance Breakdown */}
-          <GlassCard className="p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-6">Attendance Overview</h2>
-            <div className="flex items-center justify-center mb-6">
-              <div className="relative w-32 h-32 flex items-center justify-center rounded-full border-8 border-linkup-blue/10">
-                <div className="absolute inset-0 rounded-full border-8 border-linkup-blue border-r-transparent border-b-transparent -rotate-45" />
-                <div className="text-center">
-                  <span className="text-3xl font-bold text-slate-900">{MOCK_ATTENDANCE.overall}%</span>
+        <div className="w-full md:w-64 bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-5"><CalendarCheck size={80} /></div>
+          <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-inner">
+            <CalendarCheck size={24} strokeWidth={2.5} />
+          </div>
+          <h3 className="text-lg font-black text-slate-800">Tue, 10 Oct 2026</h3>
+          <p className="text-sm text-slate-500 font-medium mb-4">Day 2 • Week 5</p>
+          <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <p className="text-xs text-slate-600 font-medium italic">"Small steps every day lead to big results."</p>
+          </div>
+        </div>
+      </div>
+
+      {/* KPI Row */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { label: 'Attendance', value: '86%', sub: 'This Month', icon: CalendarCheck, color: 'text-green-600', bg: 'bg-green-100' },
+          { label: 'Pending Assignments', value: '4', sub: 'Due this week', icon: ClipboardList, color: 'text-amber-600', bg: 'bg-amber-100' },
+          { label: 'Upcoming Exams', value: '2', sub: 'Next 7 days', icon: FileCheck, color: 'text-purple-600', bg: 'bg-purple-100' },
+          { label: 'Overall Performance', value: '9.2', sub: 'Class Average: 8.4', icon: TrendingUp, color: 'text-blue-600', bg: 'bg-blue-100' }
+        ].map((kpi, i) => (
+          <div key={i} className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex items-center gap-4 hover:-translate-y-1 transition-transform">
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner ${kpi.bg} ${kpi.color}`}>
+              <kpi.icon size={24} strokeWidth={2.5} />
+            </div>
+            <div>
+              <h4 className="text-2xl font-black text-slate-800">{kpi.value}</h4>
+              <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">{kpi.label}</p>
+              <p className="text-[10px] font-medium text-slate-400 mt-0.5">{kpi.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 3 Column Layout */}
+      <div className="grid lg:grid-cols-3 gap-6">
+        
+        {/* Classes */}
+        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="font-bold text-slate-800">Today's Classes</h3>
+            <span className="text-xs font-bold text-blue-600 cursor-pointer">View All</span>
+          </div>
+          <div className="space-y-4 flex-1">
+            {[
+              { time: '08:00 AM', subject: 'Mathematics', room: 'Room 101', status: 'Ongoing' },
+              { time: '09:00 AM', subject: 'Science', room: 'Room 102', status: '' },
+              { time: '10:00 AM', subject: 'English', room: 'Room 103', status: '' },
+              { time: '11:00 AM', subject: 'Computer Science', room: 'Lab 2', status: '' }
+            ].map((c, i) => (
+              <div key={i} className="flex gap-4">
+                <div className="w-16 text-[11px] font-bold text-slate-400 pt-1">{c.time}</div>
+                <div className="w-1 bg-slate-100 rounded-full relative">
+                  <div className={`absolute inset-x-0 top-0 h-1/2 rounded-full ${c.status ? 'bg-blue-500' : ''}`} />
+                </div>
+                <div className="flex-1 pb-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-800">{c.subject}</h4>
+                      <p className="text-xs font-medium text-slate-500 mt-0.5">{c.room}</p>
+                    </div>
+                    {c.status && (
+                      <span className="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-md">
+                        {c.status}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="space-y-3">
-              {MOCK_ATTENDANCE.subjects.map((sub, idx) => (
-                <div key={idx} className="flex items-center justify-between">
-                  <span className="text-sm text-slate-600">{sub.name}</span>
-                  <span className="text-sm font-semibold text-slate-900">{sub.value}%</span>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
+            ))}
+          </div>
+        </div>
 
-          {/* Upcoming Exams */}
-          <GlassCard className="p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Upcoming Exams</h2>
-            <div className="space-y-4">
-              {MOCK_EXAMS.map((exam) => (
-                <div key={exam.id} className="p-3 rounded-lg border border-slate-100 bg-white/50">
-                  <h4 className="font-semibold text-slate-900">{exam.subject} <span className="text-xs text-slate-500 font-normal">({exam.type})</span></h4>
-                  <p className="text-sm text-slate-500 mt-1">{exam.date} • {exam.time} • {exam.room}</p>
+        {/* Assignments */}
+        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="font-bold text-slate-800">Pending Assignments</h3>
+            <span className="text-xs font-bold text-blue-600 cursor-pointer">View All</span>
+          </div>
+          <div className="space-y-3 flex-1">
+            {[
+              { title: 'Algebra Worksheet', sub: 'Mathematics • Due Oct 12', color: 'bg-blue-100 text-blue-600' },
+              { title: 'Science Lab Report', sub: 'Science • Due Oct 14', color: 'bg-green-100 text-green-600' },
+              { title: 'English Essay', sub: 'English • Due Oct 16', color: 'bg-purple-100 text-purple-600' }
+            ].map((a, i) => (
+              <div key={i} className="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${a.color}`}>
+                  <ClipboardList size={18} strokeWidth={2.5} />
                 </div>
-              ))}
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-slate-800">{a.title}</h4>
+                  <p className="text-xs font-medium text-slate-500">{a.sub}</p>
+                </div>
+                <span className="text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-1 rounded-md">Pending</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Exams */}
+        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="font-bold text-slate-800">Upcoming Exams</h3>
+            <span className="text-xs font-bold text-blue-600 cursor-pointer">View All</span>
+          </div>
+          <div className="space-y-3 flex-1">
+            {[
+              { title: 'Mathematics (Mid Term)', sub: '18 Oct • 10:00 AM • Room 204' },
+              { title: 'Science (Mid Term)', sub: '20 Oct • 10:00 AM • Lab 1' }
+            ].map((e, i) => (
+              <div key={i} className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <h4 className="text-sm font-bold text-slate-800 mb-1">{e.title}</h4>
+                <p className="text-xs font-medium text-slate-500">{e.sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Bottom Alert Banner */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-xl">🏆</div>
+          <div>
+            <h4 className="text-sm font-bold text-slate-800">You're doing great!</h4>
+            <p className="text-xs font-medium text-slate-600">Keep your attendance above 85% to maintain excellent progress.</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:flex flex-col items-end">
+            <span className="text-[10px] font-bold text-slate-500 mb-1">Next Goal: 90%</span>
+            <div className="w-32 h-2 bg-white rounded-full overflow-hidden shadow-inner">
+              <div className="w-[85%] h-full bg-green-500 rounded-full" />
             </div>
-          </GlassCard>
+          </div>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors shadow-md shadow-blue-500/20">
+            View Details
+          </button>
         </div>
       </div>
+      
     </SchoolLayout>
-  );
-}
-
-function KPICard({ icon: Icon, label, value, trend, alert }: any) {
-  return (
-    <GlassCard className="p-5 flex flex-col group hover:-translate-y-1 transition-all duration-300">
-      <div className="flex justify-between items-start mb-4">
-        <div className={`p-2 rounded-lg ${alert ? 'bg-amber-100 text-amber-600' : 'bg-linkup-blue/10 text-linkup-blue'}`}>
-          <Icon size={20} />
-        </div>
-        {trend && (
-          <span className="flex items-center gap-1 text-xs font-medium text-slate-500">
-            {alert ? null : <TrendingUp size={12} className="text-green-500" />}
-            {trend}
-          </span>
-        )}
-      </div>
-      <div>
-        <h3 className="text-2xl font-bold text-slate-900">{value}</h3>
-        <p className="text-sm font-medium text-slate-500">{label}</p>
-      </div>
-    </GlassCard>
   );
 }

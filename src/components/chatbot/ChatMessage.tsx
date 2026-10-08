@@ -73,3 +73,4 @@ export function ChatMessage({ message, onSuggestionClick }: ChatMessageProps) {
     </motion.div>
   );
 }
+

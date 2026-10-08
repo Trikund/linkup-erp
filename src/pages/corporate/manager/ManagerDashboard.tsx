@@ -1,7 +1,7 @@
 import React from 'react';
 import { CorporateLayout } from '../../../components/corporate/layout/CorporateLayout';
 import { KpiCard } from '../../../components/corporate/common/KpiCard';
-import { Users, AlertCircle, Briefcase, Calendar } from 'lucide-react';
+import { Users, AlertCircle, Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
 import { DataTable } from '../../../components/corporate/common/DataTable';
 import { mockEmployees } from '../../../data/corporate/mockData';
 
@@ -65,4 +65,4 @@ export function ManagerDashboard() {
   );
 }
 // Needed imports
-import { CheckCircle2 } from 'lucide-react';
+

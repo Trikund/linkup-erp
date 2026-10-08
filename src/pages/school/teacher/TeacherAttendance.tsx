@@ -122,7 +122,8 @@ export function TeacherAttendance() {
   );
 }
 
-function StatusBtn({ active, onClick, icon: Icon, color }: any) {
+interface StatusBtnProps { active: boolean; onClick: () => void; icon: React.ElementType; color: string; }
+function StatusBtn({ active, onClick, icon: Icon, color }: StatusBtnProps) {
   return (
     <button
       onClick={onClick}
@@ -132,3 +133,4 @@ function StatusBtn({ active, onClick, icon: Icon, color }: any) {
     </button>
   );
 }
+

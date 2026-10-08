@@ -80,7 +80,8 @@ export function SelectOrganization() {
   );
 }
 
-function OrgCard({ title, description, icon: Icon, image, href, accentColor }: any) {
+interface OrgCardProps { title: string; description: string; icon: React.ElementType; image: string; href: string; accentColor: 'blue' | 'violet'; }
+function OrgCard({ title, description, icon: Icon, image, href, accentColor }: OrgCardProps) {
   const textAccents: Record<string, string> = {
     blue: "text-linkup-blue",
     violet: "text-[#7c3aed]"
@@ -150,3 +151,4 @@ function OrgCard({ title, description, icon: Icon, image, href, accentColor }: a
     </Link>
   );
 }
+
