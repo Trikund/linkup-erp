@@ -1,7 +1,223 @@
+const fs = require('fs');
+const path = require('path');
+
+const files = {
+  'src/components/layout/SchoolSidebar.tsx': `
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { cn } from '../../lib/utils';
+import { getNavigationForRole } from '../../config/schoolNavigation';
+import { LogOut, Link as LinkIcon } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface SchoolSidebarProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
+  const location = useLocation();
+  const navigation = getNavigationForRole(role);
+
+  return (
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      <aside
+        className={cn(
+          "fixed top-0 bottom-0 left-0 z-50 w-[260px] bg-gradient-to-b from-[#11244e] to-[#0a1128] border-r border-white/10 transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col shadow-2xl overflow-hidden",
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        {/* Background glow effects */}
+        <div className="absolute top-0 left-0 w-full h-64 bg-blue-500/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-full h-64 bg-purple-500/10 blur-[80px] pointer-events-none" />
+
+        <div className="p-6 relative z-10">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <LinkIcon size={20} className="text-white" strokeWidth={2.5} />
+            </div>
+            <span className="text-2xl font-black text-white tracking-tight">LinkUp</span>
+          </div>
+          <div className="px-2">
+            <h2 className="text-[13px] font-bold text-white mb-0.5">School Management</h2>
+            <p className="text-[11px] text-blue-200/70">Greenfield Academy</p>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-4 pb-4 scrollbar-hide space-y-6 relative z-10">
+          {navigation.map((group, groupIdx) => (
+            <div key={groupIdx}>
+              {group.groupName && (
+                <h3 className="px-4 mb-3 text-[10px] font-bold uppercase tracking-widest text-blue-200/50">
+                  {group.groupName}
+                </h3>
+              )}
+              <div className="space-y-1.5">
+                {group.items.map((item) => {
+                  const isActive = location.pathname === item.href || location.pathname.startsWith(\`\${item.href}/\`);
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => onClose()}
+                      className={cn(
+                        "flex items-center gap-3 px-4 py-3 rounded-2xl text-[13px] font-semibold transition-all duration-300 relative overflow-hidden group",
+                        isActive
+                          ? "text-white bg-gradient-to-r from-blue-600/90 to-blue-400/40 shadow-[0_4px_20px_rgba(37,99,235,0.2)] border border-blue-400/30"
+                          : "text-blue-100/70 hover:text-white hover:bg-white/5"
+                      )}
+                    >
+                      {isActive && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] rounded-r-full" />
+                      )}
+                      <item.icon
+                        size={18}
+                        className={cn(
+                          "transition-colors z-10",
+                          isActive ? "text-white" : "text-blue-200/60 group-hover:text-blue-200"
+                        )}
+                        strokeWidth={isActive ? 2.5 : 2}
+                      />
+                      <span className="z-10">{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </>
+  );
+}
+  `,
+
+  'src/components/layout/SchoolTopbar.tsx': `
+import React from 'react';
+import { Menu, Search, Bell, MessageSquare, ChevronDown } from 'lucide-react';
+
+interface SchoolTopbarProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  user: { name: string; avatar?: string; roleLabel: string };
+  onOpenSidebar: () => void;
+  title?: string;
+}
+
+export function SchoolTopbar({ user, onOpenSidebar }: SchoolTopbarProps) {
+  return (
+    <header className="sticky top-0 z-30 bg-[#f4f7fb]/80 backdrop-blur-2xl border-b border-white/50 h-[72px] transition-all">
+      <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-full gap-4">
+        <div className="flex items-center gap-4 flex-1">
+          <button onClick={onOpenSidebar} className="p-2 -ml-2 text-slate-500 hover:bg-white rounded-xl lg:hidden transition-colors shadow-sm bg-white/50 border border-slate-100">
+            <Menu size={20} />
+          </button>
+          
+          <div className="hidden md:flex relative group items-center bg-white rounded-full border border-slate-200/60 shadow-sm shadow-slate-200/20 max-w-md w-full px-4 py-2.5 transition-all focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-300">
+            <Search className="text-slate-400" size={16} strokeWidth={2.5} />
+            <input 
+              type="text" 
+              placeholder="Search classes, subjects, assignments, exams..." 
+              className="bg-transparent border-none outline-none text-[13px] font-medium ml-3 w-full placeholder:text-slate-400 text-slate-700"
+            />
+            <div className="flex items-center justify-center bg-slate-100/80 border border-slate-200 text-slate-400 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm ml-2">
+              Ctrl K
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-5 shrink-0">
+          <div className="flex items-center gap-2">
+            <button className="relative p-2.5 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-colors">
+              <Bell size={20} strokeWidth={2.5} />
+              <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[#f4f7fb]"></span>
+            </button>
+            <button className="relative p-2.5 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-colors">
+              <MessageSquare size={20} strokeWidth={2.5} />
+            </button>
+          </div>
+
+          <div className="w-px h-8 bg-slate-200/60 hidden sm:block"></div>
+
+          <div className="flex items-center gap-3 p-1.5 pr-4 rounded-full cursor-pointer hover:bg-white/60 transition-all border border-transparent hover:border-slate-200/60 hover:shadow-sm">
+            <img src={user.avatar || \`https://ui-avatars.com/api/?name=\${user.name}&background=eff6ff&color=1e40af\`} alt={user.name} className="w-9 h-9 rounded-full shadow-sm" />
+            <div className="hidden sm:block text-left mr-1">
+              <p className="text-[13px] font-bold text-slate-800 leading-none mb-1">{user.name}</p>
+              <p className="text-[11px] font-medium text-slate-500 leading-none">{user.roleLabel}</p>
+            </div>
+            <ChevronDown size={14} className="text-slate-400 hidden sm:block ml-1" />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+  `,
+
+  'src/components/layout/SchoolLayout.tsx': `
+import React, { useState } from 'react';
+import { SchoolSidebar } from './SchoolSidebar';
+import { SchoolTopbar } from './SchoolTopbar';
+
+interface SchoolLayoutProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  user: {
+    name: string;
+    avatar?: string;
+    roleLabel: string;
+  };
+  title?: string;
+  description?: string;
+  children: React.ReactNode;
+}
+
+export function SchoolLayout({ role, user, title, children }: SchoolLayoutProps) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#f4f7fb] flex font-sans">
+      <SchoolSidebar 
+        role={role} 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+      />
+      
+      <div className="flex-1 flex flex-col min-w-0 lg:pl-[260px] transition-all duration-300">
+        <SchoolTopbar 
+          role={role} 
+          user={user} 
+          onOpenSidebar={() => setSidebarOpen(true)}
+          title={title}
+        />
+        
+        <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-x-hidden relative">
+          <div className="max-w-[1600px] mx-auto w-full">
+            {children}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+  `,
+
+  'src/pages/school/student/StudentDashboard.tsx': `
 import React from 'react';
 import { SchoolLayout } from '../../../components/layout/SchoolLayout';
 import { USERS } from '../../../data/mockData';
-import { Clock, ChevronDown, CalendarCheck, BookOpen, ClipboardList, FileCheck, ArrowRight, TrendingUp, ChevronLeft, ChevronRight, Send, Download, MonitorPlay, CheckCircle2, User, HelpCircle, FileText, Calendar } from 'lucide-react';
+import { CalendarCheck, BookOpen, ClipboardList, FileCheck, ArrowRight, TrendingUp, ChevronLeft, ChevronRight, Send, Download, MonitorPlay, CheckCircle2, User, HelpCircle, FileText, Calendar } from 'lucide-react';
 
 export function StudentDashboard() {
   const user = USERS.student;
@@ -58,14 +274,14 @@ export function StudentDashboard() {
             ].map((kpi, i) => (
               <div key={i} className="bg-white rounded-[24px] p-5 shadow-sm border border-slate-100 flex items-center gap-4 transition-transform hover:-translate-y-1">
                 <div className="relative w-[52px] h-[52px] flex items-center justify-center shrink-0">
-                  <div className={`absolute inset-0 rounded-2xl ${kpi.bg}`}></div>
-                  <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 ${kpi.bg}`}></div>
-                  <kpi.icon size={24} className={`relative z-10 ${kpi.color}`} strokeWidth={2.5} />
+                  <div className={\`absolute inset-0 rounded-2xl \${kpi.bg}\`}></div>
+                  <div className={\`absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 \${kpi.bg}\`}></div>
+                  <kpi.icon size={24} className={\`relative z-10 \${kpi.color}\`} strokeWidth={2.5} />
                 </div>
                 <div>
-                  <h4 className={`text-[22px] font-black ${kpi.color.replace('text-', 'text-').replace('500', '600')}`}>{kpi.value}</h4>
+                  <h4 className={\`text-[22px] font-black \${kpi.color.replace('text-', 'text-').replace('500', '600')}\`}>{kpi.value}</h4>
                   <p className="text-[12px] font-bold text-slate-800 leading-tight mb-1">{kpi.label}</p>
-                  <p className={`text-[10px] font-semibold ${kpi.subColor}`}>{kpi.sub}</p>
+                  <p className={\`text-[10px] font-semibold \${kpi.subColor}\`}>{kpi.sub}</p>
                 </div>
               </div>
             ))}
@@ -94,7 +310,7 @@ export function StudentDashboard() {
                        <span className="text-[10px] font-bold text-slate-500">{c.time}</span>
                     </div>
                     {/* Center Icon */}
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10 ${c.color} border-4 border-white shadow-sm`}>
+                    <div className={\`w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10 \${c.color} border-4 border-white shadow-sm\`}>
                        <c.icon size={12} strokeWidth={3} />
                     </div>
                     {/* Content Right */}
@@ -124,7 +340,7 @@ export function StudentDashboard() {
                   { tag: 'Computer Science', title: 'React Basics', due: 'Due: Oct 18', color: 'text-purple-600 bg-purple-100', icon: MonitorPlay, status: 'Not Started', noSubmit: true }
                 ].map((a, i) => (
                   <div key={i} className="flex items-center gap-3 border-b border-slate-100 last:border-0 pb-4 last:pb-0">
-                    <div className={`px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 shrink-0 ${a.color}`}>
+                    <div className={\`px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 shrink-0 \${a.color}\`}>
                        <a.icon size={12} strokeWidth={2.5} />
                        <span className="text-[10px] font-bold">{a.tag}</span>
                     </div>
@@ -160,7 +376,7 @@ export function StudentDashboard() {
                   { date: '25', month: 'OCT', subject: 'English', title: 'Unit Test', time: '09:00 AM', room: 'Room 103', color: 'text-pink-600 bg-pink-50 border-pink-100' }
                 ].map((e, i) => (
                   <div key={i} className="flex items-start gap-4 p-3 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100 cursor-pointer">
-                    <div className={`w-14 h-14 rounded-2xl flex flex-col items-center justify-center border shrink-0 ${e.color}`}>
+                    <div className={\`w-14 h-14 rounded-2xl flex flex-col items-center justify-center border shrink-0 \${e.color}\`}>
                        <span className="text-xl font-black leading-none">{e.date}</span>
                        <span className="text-[10px] font-bold mt-1">{e.month}</span>
                     </div>
@@ -196,13 +412,13 @@ export function StudentDashboard() {
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
                 <div key={d} className="font-bold text-slate-400 mb-2">{d}</div>
               ))}
-              {Array.from({length: 4}).map((_, i) => <div key={`e-${i}`}></div>)}
+              {Array.from({length: 4}).map((_, i) => <div key={\`e-\${i}\`}></div>)}
               {Array.from({length: 31}).map((_, i) => {
                 const day = i + 1;
                 const isToday = day === 10;
                 return (
                   <div key={day} className="flex justify-center">
-                    <span className={`w-7 h-7 flex items-center justify-center rounded-full font-bold transition-colors cursor-pointer ${isToday ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30' : 'text-slate-700 hover:bg-slate-100'}`}>
+                    <span className={\`w-7 h-7 flex items-center justify-center rounded-full font-bold transition-colors cursor-pointer \${isToday ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30' : 'text-slate-700 hover:bg-slate-100'}\`}>
                       {day}
                     </span>
                   </div>
@@ -223,9 +439,9 @@ export function StudentDashboard() {
                 { label: 'Download Certificate', icon: Download, color: 'text-blue-600', bg: 'bg-blue-50 hover:bg-blue-100' },
                 { label: 'View Timetable', icon: Calendar, color: 'text-pink-600', bg: 'bg-pink-50 hover:bg-pink-100' }
               ].map((btn, i) => (
-                <button key={i} className={`aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 p-2 transition-colors border border-transparent ${btn.bg}`}>
+                <button key={i} className={\`aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 p-2 transition-colors border border-transparent \${btn.bg}\`}>
                   <btn.icon size={20} className={btn.color} strokeWidth={2} />
-                  <span className={`text-[9px] font-bold text-center leading-tight ${btn.color}`}>{btn.label}</span>
+                  <span className={\`text-[9px] font-bold text-center leading-tight \${btn.color}\`}>{btn.label}</span>
                 </button>
               ))}
             </div>
@@ -257,7 +473,7 @@ export function StudentDashboard() {
                 ].map((b, i) => (
                   <div key={i} className="flex flex-col items-center w-full max-w-[36px] group">
                     <span className="text-[10px] font-bold text-slate-800 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">{b.val}</span>
-                    <div className={`w-full rounded-t-md transition-all duration-500 hover:opacity-80 ${b.color}`} style={{height: `${b.val}%`}}></div>
+                    <div className={\`w-full rounded-t-md transition-all duration-500 hover:opacity-80 \${b.color}\`} style={{height: \`\${b.val}%\`}}></div>
                     <span className="text-[11px] font-bold text-slate-500 absolute bottom-0">{b.label}</span>
                   </div>
                 ))}
@@ -302,7 +518,7 @@ export function StudentDashboard() {
                 { title: 'Sports Day', desc: 'Annual sports day on 15th November.', time: '2 days ago', icon: TrendingUp, color: 'text-orange-600 bg-orange-50' }
               ].map((a, i) => (
                 <div key={i} className="flex gap-4 items-start">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${a.color}`}>
+                  <div className={\`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 \${a.color}\`}>
                     <a.icon size={16} strokeWidth={2.5} />
                   </div>
                   <div className="flex-1">
@@ -325,3 +541,11 @@ export function StudentDashboard() {
 function WalletCards(props: any) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 2} strokeLinecap="round" strokeLinejoin="round" className={props.className}><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
 }
+  `
+};
+
+Object.entries(files).forEach(([filePath, content]) => {
+  fs.writeFileSync(path.join(__dirname, filePath), content.trim());
+});
+
+console.log('Advanced Student portal redesign written successfully.');
