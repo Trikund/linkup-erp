@@ -1,3 +1,252 @@
+const fs = require('fs');
+const path = require('path');
+
+const files = {
+  'src/components/layout/SchoolSidebar.tsx': `
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { cn } from '../../lib/utils';
+import { getNavigationForRole } from '../../config/schoolNavigation';
+import { LogOut, Link as LinkIcon, User, Settings, HelpCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface SchoolSidebarProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
+  const location = useLocation();
+  const navigation = getNavigationForRole(role);
+  const mainNav = navigation.filter(g => g.groupName !== 'Account');
+
+  return (
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      <aside
+        className={cn(
+          "fixed top-0 bottom-0 left-0 z-50 w-[238px] bg-gradient-to-b from-[#0a1128] to-[#121c3a] border-r border-white/5 transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col shadow-2xl overflow-hidden",
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        {/* Subtle Inner Highlight */}
+        <div className="absolute inset-0 rounded-r-2xl border-r border-white/5 pointer-events-none" />
+        <div className="absolute top-0 left-0 w-full h-64 bg-blue-500/10 blur-[80px] pointer-events-none" />
+
+        <div className="p-5 relative z-10">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <LinkIcon size={18} className="text-white" strokeWidth={2.5} />
+            </div>
+            <span className="text-xl font-black text-white tracking-tight">LinkUp</span>
+          </div>
+          <div className="px-1">
+            <h2 className="text-[12px] font-bold text-white mb-0.5">School Management</h2>
+            <p className="text-[10px] text-blue-200/70">Greenfield Academy</p>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-3 pb-4 scrollbar-hide space-y-4 relative z-10">
+          {mainNav.map((group, groupIdx) => (
+            <div key={groupIdx}>
+              {group.groupName && (
+                <h3 className="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-blue-200/50">
+                  {group.groupName}
+                </h3>
+              )}
+              <div className="space-y-1">
+                {group.items.map((item) => {
+                  const isActive = location.pathname === item.href || location.pathname.startsWith(\`\${item.href}/\`);
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => onClose()}
+                      className={cn(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-[14px] text-[13px] font-semibold transition-all duration-200 relative overflow-hidden group",
+                        isActive
+                          ? "text-white bg-blue-600/20 shadow-[0_0_15px_rgba(37,99,235,0.15)] border border-blue-400/30"
+                          : "text-blue-100/70 hover:text-white hover:bg-white/5"
+                      )}
+                    >
+                      {isActive && (
+                        <div className="absolute left-0 top-1.5 bottom-1.5 w-[3px] bg-cyan-400 rounded-r-full shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                      )}
+                      <item.icon
+                        size={18}
+                        className={cn(
+                          "transition-colors z-10 shrink-0",
+                          isActive ? "text-white" : "text-blue-200/60 group-hover:text-blue-200"
+                        )}
+                        strokeWidth={isActive ? 2.5 : 2}
+                      />
+                      <span className="z-10 truncate">{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
+          {/* Account Section */}
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <h3 className="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-blue-200/50">
+              ACCOUNT
+            </h3>
+            <div className="space-y-1">
+              {[
+                { name: 'Profile', icon: User, href: \`/school/\${role}/profile\` },
+                { name: 'Settings', icon: Settings, href: \`/school/\${role}/settings\` },
+                { name: 'Help & Support', icon: HelpCircle, href: \`/school/\${role}/help\` },
+                { name: 'Logout', icon: LogOut, href: '/school/login' }
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => onClose()}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-[14px] text-[13px] font-semibold text-blue-100/70 hover:text-white hover:bg-white/5 transition-all duration-200 group"
+                >
+                  <item.icon size={18} className="text-blue-200/60 group-hover:text-blue-200 shrink-0 transition-colors" strokeWidth={2} />
+                  <span className="truncate">{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </aside>
+    </>
+  );
+}
+  `,
+
+  'src/components/layout/SchoolTopbar.tsx': `
+import React from 'react';
+import { Menu, Search, Bell, MessageSquare, ChevronDown } from 'lucide-react';
+
+interface SchoolTopbarProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  user: { name: string; avatar?: string; roleLabel: string };
+  onOpenSidebar: () => void;
+  title?: string;
+}
+
+export function SchoolTopbar({ user, onOpenSidebar }: SchoolTopbarProps) {
+  return (
+    <header className="sticky top-0 z-30 bg-white/70 backdrop-blur-md border-b border-white/50 h-[76px] transition-all shadow-[0_4px_24px_rgba(149,157,165,0.05)]">
+      <div className="flex items-center justify-between px-6 lg:px-8 h-full gap-4">
+        <div className="flex items-center gap-4 flex-1">
+          <button onClick={onOpenSidebar} className="p-2 -ml-2 text-slate-500 hover:bg-white rounded-xl lg:hidden transition-colors shadow-sm bg-white/50 border border-slate-100">
+            <Menu size={20} />
+          </button>
+          
+          <div className="hidden md:flex relative group items-center bg-white/90 rounded-full border border-slate-200/60 shadow-sm shadow-slate-200/20 max-w-[480px] w-full px-4 py-2.5 transition-all hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-300">
+            <Search className="text-slate-400" size={18} strokeWidth={2.5} />
+            <input 
+              type="text" 
+              placeholder="Search classes, subjects, assignments, exams..." 
+              className="bg-transparent border-none outline-none text-[13px] font-medium ml-3 w-full placeholder:text-slate-400 text-slate-700"
+            />
+            <div className="flex items-center justify-center bg-slate-100 border border-slate-200 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm ml-2">
+              Ctrl K
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-5 shrink-0">
+          <div className="flex items-center gap-2">
+            <button className="relative p-2.5 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 hover:-translate-y-[1px]">
+              <Bell size={20} strokeWidth={2.5} />
+              <span className="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+            </button>
+            <button className="relative p-2.5 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 hover:-translate-y-[1px]">
+              <MessageSquare size={20} strokeWidth={2.5} />
+            </button>
+          </div>
+
+          <div className="w-px h-8 bg-slate-200/60 hidden sm:block"></div>
+
+          <div className="flex items-center gap-3 p-1.5 pr-4 rounded-full cursor-pointer hover:bg-white/80 transition-all duration-200 border border-transparent hover:border-slate-200/60 hover:shadow-sm">
+            <img src={user.avatar || \`https://ui-avatars.com/api/?name=\${user.name}&background=eff6ff&color=1e40af\`} alt={user.name} className="w-9 h-9 rounded-full shadow-sm object-cover" />
+            <div className="hidden sm:block text-left mr-1">
+              <p className="text-[13px] font-bold text-slate-800 leading-none mb-1">{user.name}</p>
+              <p className="text-[11px] font-medium text-slate-500 leading-none">{user.roleLabel}</p>
+            </div>
+            <ChevronDown size={14} className="text-slate-400 hidden sm:block ml-1" />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+  `,
+
+  'src/components/layout/SchoolLayout.tsx': `
+import React, { useState } from 'react';
+import { SchoolSidebar } from './SchoolSidebar';
+import { SchoolTopbar } from './SchoolTopbar';
+
+interface SchoolLayoutProps {
+  role: 'student' | 'teacher' | 'parent' | 'admin';
+  user: {
+    name: string;
+    avatar?: string;
+    roleLabel: string;
+  };
+  title?: string;
+  description?: string;
+  children: React.ReactNode;
+}
+
+export function SchoolLayout({ role, user, title, children }: SchoolLayoutProps) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex font-sans relative overflow-hidden">
+      {/* Soft Aurora Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-violet-400/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[40%] right-[-20%] w-[30%] h-[30%] bg-cyan-400/5 rounded-full blur-[100px]"></div>
+      </div>
+
+      <SchoolSidebar 
+        role={role} 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+      />
+      
+      <div className="flex-1 flex flex-col min-w-0 lg:pl-[238px] transition-all duration-300 relative z-10">
+        <SchoolTopbar 
+          role={role} 
+          user={user} 
+          onOpenSidebar={() => setSidebarOpen(true)}
+          title={title}
+        />
+        
+        <main className="flex-1 p-5 md:p-6 lg:p-8 overflow-x-hidden relative">
+          <div className="max-w-[1500px] mx-auto w-full">
+            {children}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+  `,
+
+  'src/pages/school/student/StudentDashboard.tsx': `
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SchoolLayout } from '../../../components/layout/SchoolLayout';
@@ -70,17 +319,17 @@ export function StudentDashboard() {
               { label: 'Upcoming Exams', value: '2', sub: 'Next 7 days', subColor: 'text-slate-500', icon: Calendar, color: 'text-violet-500', bg: 'bg-violet-100' },
               { label: 'Overall Performance', value: '9.2', sub: 'Class Average: 8.4', subColor: 'text-slate-500', icon: TrendingUp, color: 'text-blue-500', bg: 'bg-blue-100' }
             ].map((kpi, i) => (
-              <div key={i} className={`${cardClasses} p-5 flex-row items-center gap-4`}>
+              <div key={i} className={\`\${cardClasses} p-5 flex-row items-center gap-4\`}>
                 <div className="relative w-[50px] h-[50px] flex items-center justify-center shrink-0">
                   {/* Map Pin / Teardrop shape */}
-                  <div className={`absolute inset-0 rounded-2xl ${kpi.bg}`}></div>
-                  <div className={`absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 rotate-45 ${kpi.bg}`}></div>
-                  <kpi.icon size={22} className={`relative z-10 ${kpi.color}`} strokeWidth={2.5} />
+                  <div className={\`absolute inset-0 rounded-2xl \${kpi.bg}\`}></div>
+                  <div className={\`absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 rotate-45 \${kpi.bg}\`}></div>
+                  <kpi.icon size={22} className={\`relative z-10 \${kpi.color}\`} strokeWidth={2.5} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className={`text-2xl font-black mb-0.5 ${kpi.color.replace('text-', 'text-').replace('500', '600')}`}>{kpi.value}</h4>
+                  <h4 className={\`text-2xl font-black mb-0.5 \${kpi.color.replace('text-', 'text-').replace('500', '600')}\`}>{kpi.value}</h4>
                   <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1 truncate">{kpi.label}</p>
-                  <p className={`text-[10px] font-bold truncate ${kpi.subColor}`}>{kpi.sub}</p>
+                  <p className={\`text-[10px] font-bold truncate \${kpi.subColor}\`}>{kpi.sub}</p>
                 </div>
               </div>
             ))}
@@ -90,7 +339,7 @@ export function StudentDashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             
             {/* 11. TODAY'S CLASSES */}
-            <div className={`${cardClasses} p-6`}>
+            <div className={\`\${cardClasses} p-6\`}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-black text-slate-800 text-[14px]">Today's Classes</h3>
                 <button onClick={() => navigate('/school/student/timetable')} className="text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors">View All</button>
@@ -108,7 +357,7 @@ export function StudentDashboard() {
                        <span className="text-[10px] font-bold text-slate-500 leading-tight block">{c.time.split(' ')[0]}</span>
                        <span className="text-[9px] font-bold text-slate-400 block">{c.time.split(' ')[1]}</span>
                     </div>
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 z-10 ${c.color} border-[3px] border-white shadow-sm transition-transform duration-200 group-hover:scale-110`}>
+                    <div className={\`w-7 h-7 rounded-full flex items-center justify-center shrink-0 z-10 \${c.color} border-[3px] border-white shadow-sm transition-transform duration-200 group-hover:scale-110\`}>
                        <c.icon size={11} strokeWidth={3} />
                     </div>
                     <div className="flex-1 pl-3 relative z-10 pt-1 hover:bg-slate-50/50 rounded-lg transition-colors p-1 -mt-1">
@@ -124,7 +373,7 @@ export function StudentDashboard() {
             </div>
 
             {/* 12. PENDING ASSIGNMENTS */}
-            <div className={`${cardClasses} p-6`}>
+            <div className={\`\${cardClasses} p-6\`}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-black text-slate-800 text-[14px]">Pending Assignments</h3>
                 <button onClick={() => navigate('/school/student/assignments')} className="text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors">View All</button>
@@ -137,12 +386,12 @@ export function StudentDashboard() {
                   { tag: 'Computer Science', title: 'React Basics', due: 'Due: Oct 18', color: 'text-violet-600 bg-violet-50 border-violet-100', icon: MonitorPlay, status: 'Not Started', noSubmit: true }
                 ].map((a, i) => (
                   <div key={i} className="flex items-center gap-3 border-b border-slate-100/60 pb-3 last:border-0 last:pb-0 hover:bg-slate-50/50 rounded-lg transition-colors p-1 -mx-1">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${a.color}`}>
+                    <div className={\`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border \${a.color}\`}>
                        <a.icon size={12} strokeWidth={2.5} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 mb-0.5">
-                         <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md ${a.color}`}>{a.tag}</span>
+                         <span className={\`text-[9px] font-bold px-1.5 py-0.5 rounded-md \${a.color}\`}>{a.tag}</span>
                       </div>
                       <h4 className="text-[12px] font-bold text-slate-800 truncate">{a.title}</h4>
                       <p className="text-[9px] font-bold text-slate-500 mt-0.5">{a.due}</p>
@@ -163,7 +412,7 @@ export function StudentDashboard() {
             </div>
 
             {/* 13. UPCOMING EXAMS */}
-            <div className={`${cardClasses} p-6`}>
+            <div className={\`\${cardClasses} p-6\`}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-black text-slate-800 text-[14px]">Upcoming Exams</h3>
                 <button onClick={() => navigate('/school/student/exams')} className="text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors">View All</button>
@@ -175,7 +424,7 @@ export function StudentDashboard() {
                   { date: '25', month: 'OCT', subject: 'English', title: 'Unit Test', time: '09:00 AM', room: 'Room 103', color: 'text-pink-600 bg-pink-50 border-pink-200' }
                 ].map((e, i) => (
                   <div key={i} className="flex items-start gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100 cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-0.5 duration-200 ease-out bg-white/50">
-                    <div className={`w-12 h-12 rounded-xl flex flex-col items-center justify-center border shrink-0 ${e.color}`}>
+                    <div className={\`w-12 h-12 rounded-xl flex flex-col items-center justify-center border shrink-0 \${e.color}\`}>
                        <span className="text-lg font-black leading-none">{e.date}</span>
                        <span className="text-[9px] font-bold mt-1 tracking-wider">{e.month}</span>
                     </div>
@@ -200,7 +449,7 @@ export function StudentDashboard() {
         <div className="xl:col-span-1 space-y-5">
           
           {/* 14. CALENDAR */}
-          <div className={`${cardClasses} p-6`}>
+          <div className={\`\${cardClasses} p-6\`}>
             <div className="flex justify-between items-center mb-5">
               <h3 className="font-black text-slate-800 text-[14px]">October 2026</h3>
               <div className="flex gap-1">
@@ -213,14 +462,14 @@ export function StudentDashboard() {
                 <div key={d} className="font-bold text-slate-400 mb-1">{d}</div>
               ))}
               {/* Offset for Oct 2026 (Starts on Thursday) */}
-              {Array.from({length: 4}).map((_, i) => <div key={`e-${i}`}></div>)}
+              {Array.from({length: 4}).map((_, i) => <div key={\`e-\${i}\`}></div>)}
               {Array.from({length: 31}).map((_, i) => {
                 const day = i + 1;
                 const isToday = day === 10;
                 const hasEvent = [12, 14, 18, 20, 25].includes(day);
                 return (
                   <div key={day} className="flex justify-center relative">
-                    <span className={`w-7 h-7 flex items-center justify-center rounded-full font-bold transition-colors cursor-pointer ${isToday ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30' : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'}`}>
+                    <span className={\`w-7 h-7 flex items-center justify-center rounded-full font-bold transition-colors cursor-pointer \${isToday ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30' : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'}\`}>
                       {day}
                     </span>
                     {hasEvent && !isToday && (
@@ -233,7 +482,7 @@ export function StudentDashboard() {
           </div>
 
           {/* 15. QUICK ACTIONS */}
-          <div className={`${cardClasses} p-6 flex-1`}>
+          <div className={\`\${cardClasses} p-6 flex-1\`}>
             <h3 className="font-black text-slate-800 text-[14px] mb-5">Quick Actions</h3>
             <div className="grid grid-cols-3 gap-3 flex-1">
               {[
@@ -247,10 +496,10 @@ export function StudentDashboard() {
                 <button 
                   key={i} 
                   onClick={() => navigate(btn.route)}
-                  className={`aspect-square rounded-[14px] flex flex-col items-center justify-center gap-2 p-1.5 transition-all duration-200 border border-transparent hover:-translate-y-0.5 hover:shadow-sm ${btn.bg}`}
+                  className={\`aspect-square rounded-[14px] flex flex-col items-center justify-center gap-2 p-1.5 transition-all duration-200 border border-transparent hover:-translate-y-0.5 hover:shadow-sm \${btn.bg}\`}
                 >
                   <btn.icon size={20} className={btn.color} strokeWidth={2} />
-                  <span className={`text-[9px] font-bold text-center leading-tight px-1 ${btn.color}`}>{btn.label}</span>
+                  <span className={\`text-[9px] font-bold text-center leading-tight px-1 \${btn.color}\`}>{btn.label}</span>
                 </button>
               ))}
             </div>
@@ -261,7 +510,7 @@ export function StudentDashboard() {
         <div className="xl:col-span-4 grid grid-cols-1 lg:grid-cols-3 gap-5">
           
           {/* A. Subject Performance */}
-          <div className={`${cardClasses} p-6`}>
+          <div className={\`\${cardClasses} p-6\`}>
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-black text-slate-800 text-[14px]">Subject Performance</h3>
               <select className="text-[10px] font-bold text-slate-500 bg-slate-50 border border-slate-100 px-2 py-1 rounded-md outline-none cursor-pointer">
@@ -283,7 +532,7 @@ export function StudentDashboard() {
                 ].map((b, i) => (
                   <div key={i} className="flex flex-col items-center w-full max-w-[32px] group">
                     <span className="text-[9px] font-bold text-slate-700 mb-1.5 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">{b.val}</span>
-                    <div className={`w-full rounded-t-lg transition-all duration-300 shadow-sm ${b.color}`} style={{height: `${b.val}%`}}></div>
+                    <div className={\`w-full rounded-t-lg transition-all duration-300 shadow-sm \${b.color}\`} style={{height: \`\${b.val}%\`}}></div>
                     <span className="text-[9px] font-bold text-slate-500 absolute bottom-0">{b.label}</span>
                   </div>
                 ))}
@@ -292,7 +541,7 @@ export function StudentDashboard() {
           </div>
 
           {/* B. Attendance Overview */}
-          <div className={`${cardClasses} p-6`}>
+          <div className={\`\${cardClasses} p-6\`}>
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-black text-slate-800 text-[14px]">Attendance Overview</h3>
               <select className="text-[10px] font-bold text-slate-500 bg-slate-50 border border-slate-100 px-2 py-1 rounded-md outline-none cursor-pointer">
@@ -317,7 +566,7 @@ export function StudentDashboard() {
           </div>
 
           {/* C. Recent Announcements */}
-          <div className={`${cardClasses} p-6`}>
+          <div className={\`\${cardClasses} p-6\`}>
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-black text-slate-800 text-[14px]">Recent Announcements</h3>
               <button onClick={() => navigate('/school/student/notifications')} className="text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors">View All</button>
@@ -329,7 +578,7 @@ export function StudentDashboard() {
                 { title: 'Sports Day', desc: 'Annual sports day on 15th November.', time: '2 days ago', icon: TrendingUp, color: 'text-orange-600 bg-orange-50 border-orange-100' }
               ].map((a, i) => (
                 <div key={i} className="flex gap-3 items-start group hover:bg-slate-50/50 p-1.5 -mx-1.5 rounded-lg transition-colors cursor-pointer">
-                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border transition-transform duration-200 group-hover:scale-105 ${a.color}`}>
+                  <div className={\`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border transition-transform duration-200 group-hover:scale-105 \${a.color}\`}>
                     <a.icon size={14} strokeWidth={2.5} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -347,3 +596,11 @@ export function StudentDashboard() {
     </SchoolLayout>
   );
 }
+  `
+};
+
+Object.entries(files).forEach(([filePath, content]) => {
+  fs.writeFileSync(path.join(__dirname, filePath), content.trim());
+});
+
+console.log('Recreated dashboard exactly based on prompt constraints.');
