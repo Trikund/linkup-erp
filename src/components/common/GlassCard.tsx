@@ -9,15 +9,15 @@ interface GlassCardProps extends HTMLMotionProps<"div"> {
 
 export function GlassCard({ className, intensity = 'medium', children, ...props }: GlassCardProps) {
   const intensities = {
-    light: "bg-white/40 backdrop-blur-md border-white/50",
-    medium: "bg-white/60 backdrop-blur-xl border-white/70",
-    dark: "bg-slate-900/60 backdrop-blur-xl border-white/10 text-white"
+    light: "bg-white/80 backdrop-blur-md border-slate-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.02),0_4px_16px_rgba(0,0,0,0.03)]",
+    medium: "bg-white border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02),0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.02),0_10px_28px_rgba(0,0,0,0.06)] hover:border-slate-300 transition-all duration-200",
+    dark: "bg-slate-900 border-slate-800 text-white shadow-xl"
   };
 
   return (
     <motion.div
       className={cn(
-        "rounded-2xl border shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]",
+        "rounded-2xl border",
         intensities[intensity],
         className
       )}
