@@ -75,16 +75,16 @@ export function StudentTimetable() {
       <div className="space-y-6">
 
         {/* Top Controls: Day Tabs & PDF Download */}
-        <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             {days.map((day) => (
               <button
                 key={day}
                 onClick={() => setSelectedDay(day)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all shrink-0 ${
+                className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shrink-0 ${
                   selectedDay === day
                     ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/20'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 {day}
@@ -92,39 +92,39 @@ export function StudentTimetable() {
             ))}
           </div>
 
-          <button className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200/80 text-xs font-semibold transition-colors shrink-0">
-            <Download size={14} /> Download PDF Timetable
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-colors shrink-0 shadow-sm">
+            <Download size={16} /> Download PDF Timetable
           </button>
         </div>
 
         {/* Selected Day Timetable List */}
-        <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+        <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
           <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
             <div>
-              <h2 className="text-base font-bold text-slate-900">{selectedDay}'s Daily Schedule</h2>
+              <h2 className="text-lg font-bold text-slate-900">{selectedDay}'s Daily Schedule</h2>
               <p className="text-xs text-slate-500 mt-0.5">Grade 10-A • Academic Year 2026-27</p>
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-600 border border-blue-100">
+            <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
               {currentSchedule.filter(s => s.type !== 'Break').length} Academic Sessions
             </span>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {currentSchedule.map((slot, idx) => {
               const isBreak = slot.type === 'Break';
               return (
                 <div 
-                  key={idx}
-                  className={`p-4 rounded-xl border transition-all ${
+                  key={idx} 
+                  className={`p-5 rounded-2xl border transition-all ${
                     isBreak 
                       ? 'bg-slate-50/70 border-dashed border-slate-200 text-slate-500' 
                       : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-xs'
                   }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-5">
                       {/* Period Badge */}
-                      <span className={`w-20 text-center px-2 py-1 rounded-lg text-xs font-bold shrink-0 ${
+                      <span className={`w-24 text-center px-3 py-1.5 rounded-xl text-xs font-bold shrink-0 ${
                         isBreak 
                           ? 'bg-slate-200/60 text-slate-600' 
                           : 'bg-blue-50 text-blue-700 border border-blue-100'
@@ -133,18 +133,18 @@ export function StudentTimetable() {
                       </span>
 
                       {/* Time */}
-                      <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-700 w-36 shrink-0">
-                        <Clock size={13} className="text-slate-400" />
+                      <div className="flex items-center gap-2 text-sm font-mono font-bold text-slate-700 w-44 shrink-0">
+                        <Clock size={16} className="text-slate-400" />
                         {slot.time}
                       </div>
 
                       {/* Subject Name */}
                       <div>
-                        <h4 className={`text-sm font-bold ${isBreak ? 'text-slate-600 italic' : 'text-slate-900'}`}>
+                        <h4 className={`text-base font-bold ${isBreak ? 'text-slate-600 italic' : 'text-slate-900'}`}>
                           {slot.subject}
                         </h4>
                         {!isBreak && (
-                          <p className="text-xs text-slate-500 mt-0.5 flex items-center gap-2">
+                          <p className="text-sm text-slate-500 mt-0.5 flex items-center gap-2">
                             <span>{slot.teacher}</span>
                           </p>
                         )}
@@ -152,15 +152,15 @@ export function StudentTimetable() {
                     </div>
 
                     {/* Room & Type Badge */}
-                    <div className="flex items-center gap-3 sm:text-right shrink-0">
-                      <span className="text-xs text-slate-500 flex items-center gap-1">
-                        <MapPin size={12} className="text-slate-400" /> {slot.room}
+                    <div className="flex items-center gap-4 sm:text-right shrink-0">
+                      <span className="text-sm text-slate-600 font-medium flex items-center gap-1.5">
+                        <MapPin size={15} className="text-slate-400" /> {slot.room}
                       </span>
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
-                        slot.type === 'Core' ? 'bg-indigo-50 text-indigo-700' :
-                        slot.type === 'Lab' ? 'bg-cyan-50 text-cyan-700' :
-                        slot.type === 'Practical' ? 'bg-purple-50 text-purple-700' :
-                        slot.type === 'Sports' ? 'bg-emerald-50 text-emerald-700' :
+                      <span className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider ${
+                        slot.type === 'Core' ? 'bg-indigo-50 text-indigo-700 border border-indigo-100' :
+                        slot.type === 'Lab' ? 'bg-cyan-50 text-cyan-700 border border-cyan-100' :
+                        slot.type === 'Practical' ? 'bg-purple-50 text-purple-700 border border-purple-100' :
+                        slot.type === 'Sports' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' :
                         'bg-slate-100 text-slate-600'
                       }`}>
                         {slot.type}

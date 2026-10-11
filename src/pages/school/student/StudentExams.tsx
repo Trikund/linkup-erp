@@ -79,66 +79,68 @@ export function StudentExams() {
       <div className="space-y-6">
 
         {/* Top Announcement Banner with Admit Card Download */}
-        <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+        <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)] flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-1.5">
+            <span className="px-3 py-1 rounded-md text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
               OFFICIAL DATESHEET
             </span>
-            <h2 className="text-xl font-bold text-slate-900">Mid-Term Examinations 2026</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-2xl font-black text-slate-900">Mid-Term Examinations 2026</h2>
+            <p className="text-sm text-slate-500 font-medium">
               Roll No: <strong className="text-slate-800 font-mono">1024</strong> • Enrollment: <strong className="text-slate-800 font-mono">GA-2024-ST1024</strong> • Examination Center: <strong className="text-slate-800">Greenfield Academy Main Campus</strong>
             </p>
           </div>
 
-          <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm shadow-blue-500/20 transition-all shrink-0">
-            <Download size={15} /> Download Admit Card (PDF)
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-sm shadow-blue-500/20 transition-all shrink-0">
+            <Download size={16} /> Download Admit Card (PDF)
           </button>
         </div>
 
         {/* Exam Schedule Table / List */}
         <div className="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between">
-            <h3 className="font-bold text-sm text-slate-900">Exam Timetable & Seating Information</h3>
-            <span className="text-xs text-slate-500 font-medium">5 Papers Scheduled</span>
+          <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+            <h3 className="font-bold text-base text-slate-900">Exam Timetable & Seating Information</h3>
+            <span className="text-sm text-slate-500 font-medium">5 Papers Scheduled</span>
           </div>
 
           <div className="divide-y divide-slate-100">
             {exams.map((exam, i) => (
-              <div key={i} className="p-5 hover:bg-slate-50/50 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <div className="flex items-start gap-4">
+              <div key={i} className="p-6 hover:bg-slate-50/50 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+                <div className="flex items-start gap-5">
                   {/* Date Pill */}
-                  <div className="w-14 h-14 rounded-xl bg-blue-50 border border-blue-100 flex flex-col items-center justify-center text-blue-700 shrink-0 font-sans shadow-2xs">
-                    <span className="text-lg font-black leading-none">{exam.date.split(' ')[0]}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider mt-0.5">{exam.date.split(' ')[1]}</span>
+                  <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex flex-col items-center justify-center text-blue-700 shrink-0 font-sans shadow-2xs">
+                    <span className="text-xl font-black leading-none">{exam.date.split(' ')[0]}</span>
+                    <span className="text-xs font-bold uppercase tracking-wider mt-1">{exam.date.split(' ')[1]}</span>
                   </div>
 
                   {/* Subject Details */}
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-md">
                         {exam.code}
                       </span>
-                      <h4 className="text-base font-bold text-slate-900">{exam.subject}</h4>
+                      <h4 className="text-lg font-bold text-slate-900">{exam.subject}</h4>
                     </div>
-                    <p className="text-xs text-slate-500 flex flex-wrap items-center gap-3">
-                      <span className="flex items-center gap-1 font-medium text-slate-700">
-                        <Clock size={12} className="text-slate-400" /> {exam.time} ({exam.duration})
+                    <p className="text-sm text-slate-500 flex flex-wrap items-center gap-3">
+                      <span className="flex items-center gap-1.5 font-semibold text-slate-700">
+                        <Clock size={15} className="text-slate-400" /> {exam.time} ({exam.duration})
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <MapPin size={12} className="text-slate-400" /> {exam.room}
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={15} className="text-slate-400" /> {exam.room}
                       </span>
                       <span>•</span>
-                      <span className="font-semibold text-blue-600">{exam.seatNo}</span>
+                      <span className="font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">
+                        {exam.seatNo}
+                      </span>
                     </p>
-                    <p className="text-xs text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-100/80 mt-2 max-w-3xl">
-                      <strong className="text-slate-700">Syllabus:</strong> {exam.syllabus}
+                    <p className="text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100 mt-2 max-w-3xl leading-relaxed">
+                      <strong className="text-slate-800">Syllabus Scope:</strong> {exam.syllabus}
                     </p>
                   </div>
                 </div>
 
                 <div className="text-right shrink-0">
-                  <span className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+                  <span className="text-sm font-bold text-slate-700 bg-slate-100 px-3.5 py-2 rounded-xl inline-block">
                     Max: {exam.maxMarks} Marks
                   </span>
                 </div>
@@ -148,11 +150,11 @@ export function StudentExams() {
         </div>
 
         {/* Examination Instructions */}
-        <div className="bg-amber-50/60 border border-amber-200/70 rounded-2xl p-5 text-xs text-amber-900 space-y-2">
-          <h4 className="font-bold flex items-center gap-1.5 text-amber-900">
-            <AlertCircle size={15} className="text-amber-600" /> Examination Hall Guidelines:
+        <div className="bg-amber-50/60 border border-amber-200/70 rounded-2xl p-6 text-sm text-amber-900 space-y-2.5">
+          <h4 className="font-bold flex items-center gap-2 text-amber-950">
+            <AlertCircle size={18} className="text-amber-600" /> Examination Hall Guidelines:
           </h4>
-          <ul className="list-disc list-inside space-y-1 text-amber-800 leading-relaxed">
+          <ul className="list-disc list-inside space-y-1.5 text-xs text-amber-800 leading-relaxed font-medium">
             <li>Students must be seated in their designated examination rooms at least 15 minutes before reading time.</li>
             <li>Admit card and school ID badge are strictly mandatory for entry to all examination blocks.</li>
             <li>No electronic gadgets, smart watches, or programmable calculators are permitted inside the hall.</li>

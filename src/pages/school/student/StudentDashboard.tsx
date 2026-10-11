@@ -69,66 +69,66 @@ export function StudentDashboard() {
         {/* 1. TOP ROW: 4 STATISTIC / KPI CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Card 1: Attendance */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                <CalendarCheck size={19} />
+              <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                <CalendarCheck size={22} />
               </div>
-              <span className="flex items-center gap-1 text-xs font-semibold text-emerald-500">
-                <TrendingUp size={13} /> +3.2% this month
+              <span className="flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                <TrendingUp size={13} /> +3.2%
               </span>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">92%</h3>
-              <p className="text-xs font-medium text-slate-500 mt-1">Attendance</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">92.4%</h3>
+              <p className="text-sm font-semibold text-slate-500 mt-1">Overall Attendance</p>
             </div>
           </div>
 
           {/* Card 2: Course Progress */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                <BookOpen size={19} />
+              <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                <BookOpen size={22} />
               </div>
-              <span className="flex items-center gap-1 text-xs font-semibold text-emerald-500">
+              <span className="flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
                 <TrendingUp size={13} /> On track
               </span>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">78%</h3>
-              <p className="text-xs font-medium text-slate-500 mt-1">Course Progress</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">6 Subjects</h3>
+              <p className="text-sm font-semibold text-slate-500 mt-1">Enrolled Courses</p>
             </div>
           </div>
 
           {/* Card 3: Assignments */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
-                <ClipboardList size={19} />
+              <div className="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
+                <ClipboardList size={22} />
               </div>
-              <span className="text-xs font-medium text-slate-500">
-                2 Pending
+              <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
+                2 Due Soon
               </span>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">8 / 10</h3>
-              <p className="text-xs font-medium text-slate-500 mt-1">Assignments</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">8 / 10</h3>
+              <p className="text-sm font-semibold text-slate-500 mt-1">Completed Assignments</p>
             </div>
           </div>
 
           {/* Card 4: Upcoming Exams */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col justify-between">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                <FileCheck size={19} />
+              <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                <FileCheck size={22} />
               </div>
-              <span className="flex items-center gap-1 text-xs font-semibold text-emerald-500">
-                <TrendingUp size={13} /> Next: 18 Oct
+              <span className="flex items-center gap-1 text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">
+                Starts 15 Oct
               </span>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">2</h3>
-              <p className="text-xs font-medium text-slate-500 mt-1">Upcoming Exams</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">GPA 9.2</h3>
+              <p className="text-sm font-semibold text-slate-500 mt-1">Academic Rank #3</p>
             </div>
           </div>
         </div>
@@ -140,29 +140,32 @@ export function StudentDashboard() {
           <div className="lg:col-span-2 space-y-6">
 
             {/* Today's Schedule */}
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+            <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-base font-bold text-slate-900">Today's Schedule</h2>
-                <a href="/school/student/timetable" className="text-xs font-medium text-blue-600 hover:underline">
-                  View Timetable
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Today's Class Schedule</h2>
+                  <p className="text-xs text-slate-500 mt-0.5">Monday • 3 Academic Sessions Scheduled</p>
+                </div>
+                <a href="/school/student/timetable" className="text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline">
+                  Full Timetable →
                 </a>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 {timetableItems.map((item, idx) => (
                   <div 
                     key={idx} 
-                    className="flex items-center gap-5 p-3.5 rounded-xl border border-slate-50 bg-slate-50/40 hover:bg-white hover:border-slate-100 hover:shadow-xs transition-all duration-150"
+                    className="flex items-center gap-5 p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-slate-200 hover:shadow-xs transition-all duration-150"
                   >
-                    <div className="w-20 text-xs font-bold text-slate-800 shrink-0">
+                    <div className="w-24 text-sm font-mono font-bold text-slate-800 shrink-0">
                       {item.time}
                     </div>
 
-                    <div className="w-0.5 h-7 bg-blue-500 rounded-full shrink-0" />
+                    <div className="w-1 h-8 bg-blue-500 rounded-full shrink-0" />
 
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-semibold text-slate-900 truncate">{item.subject}</h4>
-                      <p className="text-xs text-slate-500 mt-0.5">{item.room}</p>
+                      <h4 className="text-base font-bold text-slate-900 truncate">{item.subject}</h4>
+                      <p className="text-sm text-slate-500 mt-0.5">{item.room}</p>
                     </div>
                   </div>
                 ))}
@@ -170,39 +173,42 @@ export function StudentDashboard() {
             </div>
 
             {/* Pending Assignments */}
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+            <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-base font-bold text-slate-900">Pending Assignments</h2>
-                <a href="/school/student/assignments" className="text-xs font-medium text-blue-600 hover:underline">
-                  View All
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Pending Assignments & Homework</h2>
+                  <p className="text-xs text-slate-500 mt-0.5">Tasks requiring your attention this week</p>
+                </div>
+                <a href="/school/student/assignments" className="text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline">
+                  View All (4) →
                 </a>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {pendingAssignments.map((a) => (
-                  <div key={a.id} className="p-4 rounded-xl border border-slate-100 bg-slate-50/30 flex flex-col justify-between">
+                  <div key={a.id} className="p-5 rounded-2xl border border-slate-100 bg-slate-50/40 flex flex-col justify-between hover:bg-white hover:border-slate-200 transition-all">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-600 border border-blue-100/60">
+                        <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">
                           {a.subject}
                         </span>
-                        <span className={`px-2 py-0.5 rounded text-[11px] font-medium ${
+                        <span className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
                           a.statusType === 'pending'
-                            ? 'bg-amber-50 text-amber-600 border border-amber-100/80'
-                            : 'bg-emerald-50 text-emerald-600 border border-emerald-100/80'
+                            ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                            : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                         }`}>
                           {a.status}
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-bold text-slate-900">{a.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{a.due}</p>
+                      <h4 className="text-base font-bold text-slate-900">{a.title}</h4>
+                      <p className="text-sm text-slate-500 mt-1 font-medium">{a.due}</p>
                     </div>
 
-                    <div className="mt-4 pt-2">
+                    <div className="mt-5 pt-3 border-t border-slate-100">
                       <a 
                         href={a.actionHref} 
-                        className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1"
+                        className="text-sm font-bold text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
                       >
                         {a.action}
                       </a>
@@ -218,12 +224,12 @@ export function StudentDashboard() {
           <div className="space-y-6">
 
             {/* Attendance Overview */}
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-              <h2 className="text-base font-bold text-slate-900 mb-6">Attendance Overview</h2>
+            <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <h2 className="text-lg font-bold text-slate-900 mb-6">Attendance Overview</h2>
 
               {/* Exact Circular Ring Chart */}
               <div className="flex items-center justify-center my-4">
-                <div className="relative w-36 h-36 flex items-center justify-center">
+                <div className="relative w-40 h-40 flex items-center justify-center">
                   <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
                     <circle
                       cx="50"
@@ -245,34 +251,38 @@ export function StudentDashboard() {
                       strokeLinecap="round"
                     />
                   </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-3xl font-black text-slate-900">92%</span>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-3xl font-black text-slate-900">92.4%</span>
+                    <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wide">Excellent</span>
                   </div>
                 </div>
               </div>
 
               {/* Breakdown Subjects List */}
-              <div className="space-y-3 pt-4 border-t border-slate-50 text-xs">
+              <div className="space-y-3 pt-5 border-t border-slate-100 text-sm">
                 {attendanceSubjects.map((sub, i) => (
                   <div key={i} className="flex items-center justify-between">
                     <span className="text-slate-600 font-medium">{sub.name}</span>
-                    <span className="font-semibold text-slate-900">{sub.value}%</span>
+                    <span className="font-bold text-slate-900">{sub.value}%</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Upcoming Exams */}
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-              <h2 className="text-base font-bold text-slate-900 mb-4">Upcoming Exams</h2>
+            <div className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-bold text-slate-900">Upcoming Exams</h2>
+                <a href="/school/student/exams" className="text-xs font-bold text-blue-600 hover:underline">Datesheet →</a>
+              </div>
 
               <div className="space-y-3">
                 {upcomingExams.map((exam, i) => (
-                  <div key={i} className="p-3.5 rounded-xl border border-slate-100 bg-slate-50/40">
-                    <h4 className="text-xs font-bold text-slate-900">
-                      {exam.subject} <span className="text-slate-400 font-normal">({exam.type})</span>
+                  <div key={i} className="p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+                    <h4 className="text-sm font-bold text-slate-900">
+                      {exam.subject} <span className="text-slate-500 font-medium">({exam.type})</span>
                     </h4>
-                    <p className="text-xs text-slate-500 mt-1">{exam.date}</p>
+                    <p className="text-xs font-medium text-slate-500 mt-1">{exam.date}</p>
                   </div>
                 ))}
               </div>

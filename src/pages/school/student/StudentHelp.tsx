@@ -86,44 +86,44 @@ export function StudentHelp() {
 
         {/* Support Helplines Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <div className="flex items-center gap-2.5 text-blue-600 mb-2">
-              <BookOpen className="w-5 h-5" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+            <div className="flex items-center gap-2.5 text-blue-600 mb-2.5">
+              <BookOpen className="w-6 h-6" />
               <span className="text-xs font-bold uppercase tracking-wider">Exam Controller Desk</span>
             </div>
-            <p className="text-sm font-bold text-slate-900">Mr. Anand Saxena</p>
-            <p className="text-xs text-slate-500 mt-1">exams@dpsdelhi.edu.in</p>
-            <p className="text-xs text-slate-400 mt-0.5">Ext: 204 • Room 102</p>
+            <p className="text-base font-bold text-slate-900">Mr. Anand Saxena</p>
+            <p className="text-sm text-slate-500 mt-1">exams@dpsdelhi.edu.in</p>
+            <p className="text-sm text-slate-400 mt-0.5">Ext: 204 • Room 102</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <div className="flex items-center gap-2.5 text-emerald-600 mb-2">
-              <WalletCards className="w-5 h-5" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+            <div className="flex items-center gap-2.5 text-emerald-600 mb-2.5">
+              <WalletCards className="w-6 h-6" />
               <span className="text-xs font-bold uppercase tracking-wider">Accounts & Bursar</span>
             </div>
-            <p className="text-sm font-bold text-slate-900">Mr. R. K. Singhania</p>
-            <p className="text-xs text-slate-500 mt-1">bursar@dpsdelhi.edu.in</p>
-            <p className="text-xs text-slate-400 mt-0.5">Ext: 105 • Admin Block</p>
+            <p className="text-base font-bold text-slate-900">Mr. R. K. Singhania</p>
+            <p className="text-sm text-slate-500 mt-1">bursar@dpsdelhi.edu.in</p>
+            <p className="text-sm text-slate-400 mt-0.5">Ext: 105 • Admin Block</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <div className="flex items-center gap-2.5 text-amber-600 mb-2">
-              <Bus className="w-5 h-5" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+            <div className="flex items-center gap-2.5 text-amber-600 mb-2.5">
+              <Bus className="w-6 h-6" />
               <span className="text-xs font-bold uppercase tracking-wider">Transport Helpline</span>
             </div>
-            <p className="text-sm font-bold text-slate-900">Mr. Balram (In-charge)</p>
-            <p className="text-xs text-slate-500 mt-1">transport@dpsdelhi.edu.in</p>
-            <p className="text-xs text-slate-400 mt-0.5">+91 94102 38910</p>
+            <p className="text-base font-bold text-slate-900">Mr. Balram (In-charge)</p>
+            <p className="text-sm text-slate-500 mt-1">transport@dpsdelhi.edu.in</p>
+            <p className="text-sm text-slate-400 mt-0.5">+91 94102 38910</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <div className="flex items-center gap-2.5 text-purple-600 mb-2">
-              <MessageSquare className="w-5 h-5" />
-              <span className="text-xs font-bold uppercase tracking-wider">IT & ERP Portal Support</span>
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+            <div className="flex items-center gap-2.5 text-purple-600 mb-2.5">
+              <MessageSquare className="w-6 h-6" />
+              <span className="text-xs font-bold uppercase tracking-wider">IT & ERP Support</span>
             </div>
-            <p className="text-sm font-bold text-slate-900">Portal Technical Team</p>
-            <p className="text-xs text-slate-500 mt-1">support@linkuperp.edu</p>
-            <p className="text-xs text-slate-400 mt-0.5">Response within 2 hours</p>
+            <p className="text-base font-bold text-slate-900">Portal Technical Team</p>
+            <p className="text-sm text-slate-500 mt-1">support@linkuperp.edu</p>
+            <p className="text-sm text-slate-400 mt-0.5">Response within 2 hours</p>
           </div>
         </div>
 
@@ -132,21 +132,21 @@ export function StudentHelp() {
 
           {/* Left Column: FAQs (2 Cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
-                <div className="flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-blue-600" />
-                  <h3 className="text-base font-bold text-slate-900">Frequently Asked Questions</h3>
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                <div className="flex items-center gap-2.5">
+                  <HelpCircle className="w-6 h-6 text-blue-600" />
+                  <h3 className="text-lg font-bold text-slate-900">Frequently Asked Questions</h3>
                 </div>
 
-                <div className="relative min-w-[240px]">
-                  <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-slate-400" />
+                <div className="relative min-w-[260px]">
+                  <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
                   <input 
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search FAQ answers..."
-                    className="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -156,19 +156,19 @@ export function StudentHelp() {
                   const isOpen = openFaq === idx;
 
                   return (
-                    <div key={idx} className="py-3.5">
+                    <div key={idx} className="py-4">
                       <button
                         onClick={() => setOpenFaq(isOpen ? null : idx)}
                         className="w-full flex items-center justify-between text-left gap-4"
                       >
-                        <span className="text-xs font-bold text-slate-800 leading-snug">{faq.q}</span>
+                        <span className="text-base font-bold text-slate-800 leading-snug">{faq.q}</span>
                         <span className="text-slate-400 shrink-0">
-                          {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+                          {isOpen ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
                         </span>
                       </button>
 
                       {isOpen && (
-                        <div className="mt-2.5 pt-2 text-xs text-slate-600 leading-relaxed font-normal bg-slate-50/60 p-3 rounded-xl border border-slate-100 animate-in fade-in duration-150">
+                        <div className="mt-3 text-sm text-slate-600 leading-relaxed font-normal bg-slate-50/70 p-4 rounded-xl border border-slate-100 animate-in fade-in duration-150">
                           {faq.a}
                         </div>
                       )}
@@ -181,28 +181,28 @@ export function StudentHelp() {
 
           {/* Right Column: Submit Support Ticket Form */}
           <div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] sticky top-6">
-              <h3 className="text-base font-bold text-slate-900 mb-1">Send Support Query</h3>
-              <p className="text-xs text-slate-500 mb-4">Have an unresolved issue? Submit a ticket directly to the faculty desk.</p>
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.02)] sticky top-6">
+              <h3 className="text-lg font-bold text-slate-900 mb-1">Send Support Query</h3>
+              <p className="text-sm text-slate-500 mb-5">Have an unresolved issue? Submit a ticket directly to the faculty desk.</p>
 
               {ticketSubmitted ? (
                 <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-7 h-7" />
+                  <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900">Ticket #TCK-2026-891 Created</h4>
-                  <p className="text-xs text-slate-500">
+                  <h4 className="text-base font-bold text-slate-900">Ticket #TCK-2026-891 Created</h4>
+                  <p className="text-sm text-slate-500">
                     Your request has been routed to the relevant coordinator. You will receive an update in Notifications.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleTicketSubmit} className="space-y-3.5 text-xs">
+                <form onSubmit={handleTicketSubmit} className="space-y-4">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Concern Category</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Concern Category</label>
                     <select
                       value={ticketCategory}
                       onChange={(e) => setTicketCategory(e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-slate-800 bg-white"
+                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option>Academic & Exams</option>
                       <option>Attendance Discrepancy</option>
@@ -214,34 +214,34 @@ export function StudentHelp() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Subject</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Subject</label>
                     <input 
                       type="text"
                       required
                       value={ticketSubject}
                       onChange={(e) => setTicketSubject(e.target.value)}
                       placeholder="Brief topic of your query..."
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Detailed Message</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Detailed Message</label>
                     <textarea 
                       required
                       rows={4}
                       value={ticketMessage}
                       onChange={(e) => setTicketMessage(e.target.value)}
                       placeholder="Explain your inquiry or issue clearly..."
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition shadow-sm"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition shadow-sm"
                   >
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-4 h-4" />
                     Submit Support Ticket
                   </button>
                 </form>

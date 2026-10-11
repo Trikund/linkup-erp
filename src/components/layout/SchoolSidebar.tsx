@@ -35,24 +35,24 @@ export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed top-0 bottom-0 left-0 z-50 w-60 bg-white border-r border-slate-100 shadow-[1px_0_10px_rgba(0,0,0,0.01)] transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col font-sans",
+          "fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-slate-100 shadow-[1px_0_10px_rgba(0,0,0,0.01)] transition-transform duration-300 ease-in-out lg:translate-x-0 flex flex-col font-sans",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         {/* Header */}
-        <div className="p-5 border-b border-slate-100">
+        <div className="p-6 border-b border-slate-100">
           <Logo />
           <div className="mt-3.5 px-0.5">
-            <h2 className="text-xs font-bold text-slate-800 tracking-tight">School Management</h2>
-            <p className="text-[10px] text-slate-400">Greenfield Academy</p>
+            <h2 className="text-sm font-bold text-slate-800 tracking-tight">School Management</h2>
+            <p className="text-xs text-slate-500">Greenfield Academy</p>
           </div>
         </div>
 
         {/* Navigation */}
-        <div className="flex-1 overflow-y-auto py-3 px-2.5 space-y-4 scrollbar-thin scrollbar-thumb-slate-200">
+        <div className="flex-1 overflow-y-auto py-3.5 px-3 space-y-4 scrollbar-thin scrollbar-thumb-slate-200">
           {mainNav.map((group, groupIdx) => (
             <div key={groupIdx}>
-              <div className="space-y-0.5">
+              <div className="space-y-1">
                 {group.items.map((item) => {
                   const isActive = location.pathname === item.href || (item.href !== '/school/student' && location.pathname.startsWith(`${item.href}/`));
                   return (
@@ -61,14 +61,14 @@ export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
                       to={item.href}
                       onClick={() => onClose()}
                       className={cn(
-                        "flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-150 group relative",
+                        "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 group relative",
                         isActive
-                          ? "text-blue-600 bg-blue-50/80 font-bold border-l-4 border-blue-600 rounded-l-none pl-2.5"
+                          ? "text-blue-600 bg-blue-50/80 font-bold border-l-4 border-blue-600 rounded-l-none pl-3"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                       )}
                     >
                       <item.icon
-                        size={16}
+                        size={18}
                         className={cn(
                           "transition-colors shrink-0",
                           isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
@@ -85,15 +85,15 @@ export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
 
           {/* Account Section */}
           <div className="pt-2">
-            <div className="px-3 mb-1.5 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <div className="px-3.5 mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400">
               <span>ACCOUNT</span>
             </div>
-            <div className="space-y-0.5">
+            <div className="space-y-1">
               <Link
                 to="/"
-                className="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50/70 transition-colors group"
+                className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50/70 transition-colors group"
               >
-                <LogOut size={16} className="text-slate-400 group-hover:text-rose-600" />
+                <LogOut size={18} className="text-slate-400 group-hover:text-rose-600" />
                 <span>Logout</span>
               </Link>
             </div>

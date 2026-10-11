@@ -80,11 +80,11 @@ export function StudentAssignments() {
       <div className="space-y-6">
 
         {/* Top Tab Bar & Stats */}
-        <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => setActiveTab('pending')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'pending'
                   ? 'bg-amber-500 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100'
@@ -94,7 +94,7 @@ export function StudentAssignments() {
             </button>
             <button
               onClick={() => setActiveTab('submitted')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'submitted'
                   ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100'
@@ -104,7 +104,7 @@ export function StudentAssignments() {
             </button>
             <button
               onClick={() => setActiveTab('graded')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'graded'
                   ? 'bg-emerald-600 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100'
@@ -114,8 +114,8 @@ export function StudentAssignments() {
             </button>
           </div>
 
-          <div className="text-xs text-slate-500">
-            Average Score: <strong className="text-slate-900 font-bold">94.5% (A+)</strong>
+          <div className="text-sm text-slate-500">
+            Average Score: <strong className="text-slate-900 font-bold text-base">94.5% (A+)</strong>
           </div>
         </div>
 
@@ -124,47 +124,47 @@ export function StudentAssignments() {
           {currentList.map((item) => (
             <div 
               key={item.id} 
-              className="bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-slate-200 transition-all"
+              className="bg-white border border-slate-100 rounded-2xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-slate-200 transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                <div className="space-y-2 flex-1">
+                <div className="space-y-2.5 flex-1">
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                    <span className="px-3 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
                       {item.subject}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400">
+                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
                       Total: {item.totalMarks} Marks
                     </span>
                     {item.weightage && (
-                      <span className="text-xs text-slate-400">• {item.weightage}</span>
+                      <span className="text-sm text-slate-400">• {item.weightage}</span>
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed max-w-4xl">{item.description}</p>
+                  <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-4xl">{item.description}</p>
 
                   {/* If Graded: Show teacher remarks */}
                   {item.teacherFeedback && (
-                    <div className="p-3.5 bg-emerald-50/60 border border-emerald-100 rounded-xl my-2 text-xs">
-                      <p className="font-bold text-emerald-900 flex items-center gap-1.5 mb-1">
-                        <Star size={13} className="text-emerald-600" /> Teacher Evaluation & Feedback:
+                    <div className="p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl my-2 text-sm">
+                      <p className="font-bold text-emerald-900 flex items-center gap-2 mb-1">
+                        <Star size={16} className="text-emerald-600" /> Teacher Evaluation & Feedback:
                       </p>
                       <p className="text-emerald-800 italic">"{item.teacherFeedback}"</p>
                     </div>
                   )}
 
-                  <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                  <div className="pt-2 flex flex-wrap items-center gap-5 text-sm text-slate-500">
                     {item.status === 'pending' ? (
-                      <span className="font-semibold text-amber-600 flex items-center gap-1">
-                        <Clock size={13} /> Deadline: {item.due} ({item.daysLeft})
+                      <span className="font-bold text-amber-600 flex items-center gap-1.5">
+                        <Clock size={16} /> Deadline: {item.due} ({item.daysLeft})
                       </span>
                     ) : item.status === 'submitted' ? (
-                      <span className="text-blue-600 font-medium">
-                        Submitted on {item.submittedDate} • Evaluation in progress
+                      <span className="text-blue-600 font-semibold flex items-center gap-1.5">
+                        <Clock size={16} /> Submitted on {item.submittedDate} • Evaluation in progress
                       </span>
                     ) : (
-                      <span className="text-slate-500">
-                        Evaluated & Verified on portal
+                      <span className="text-emerald-700 font-semibold flex items-center gap-1.5">
+                        <CheckCircle2 size={16} /> Evaluated & Verified on portal
                       </span>
                     )}
                   </div>
@@ -173,17 +173,17 @@ export function StudentAssignments() {
                 {/* Right Action / Score Column */}
                 <div className="shrink-0 flex flex-col items-end justify-between self-stretch">
                   {item.status === 'pending' ? (
-                    <button className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm shadow-blue-500/20 transition-all flex items-center gap-2">
-                      <Upload size={14} /> Submit Solution
+                    <button className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-sm shadow-blue-500/20 transition-all flex items-center gap-2">
+                      <Upload size={16} /> Submit Solution
                     </button>
                   ) : item.status === 'submitted' ? (
-                    <span className="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-700 border border-blue-100 text-xs font-semibold flex items-center gap-1.5">
-                      <Clock size={14} /> In Review
+                    <span className="px-4 py-2 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 text-sm font-semibold flex items-center gap-2">
+                      <Clock size={16} /> In Review
                     </span>
                   ) : (
                     <div className="text-right">
-                      <span className="text-2xl font-black text-emerald-600">{item.score}</span>
-                      <p className="text-xs font-bold text-slate-400">Grade: {item.grade}</p>
+                      <span className="text-3xl font-black text-emerald-600">{item.score}</span>
+                      <p className="text-sm font-bold text-slate-500 mt-0.5">Grade: {item.grade}</p>
                     </div>
                   )}
                 </div>

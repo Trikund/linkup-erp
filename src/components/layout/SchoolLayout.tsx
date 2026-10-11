@@ -25,7 +25,7 @@ export function SchoolLayout({ role, user, title, description, children }: Schoo
         onClose={() => setSidebarOpen(false)} 
       />
       
-      <div className="flex-1 flex flex-col min-w-0 lg:pl-60 transition-all duration-300">
+      <div className="flex-1 flex flex-col min-w-0 lg:pl-64 transition-all duration-300">
         <SchoolTopbar 
           role={role} 
           user={user} 
@@ -34,8 +34,8 @@ export function SchoolLayout({ role, user, title, description, children }: Schoo
           description={description}
         />
         
-        <main className="flex-1 p-5 md:p-6 lg:p-7 overflow-x-hidden">
-          <div className="max-w-[1500px] mx-auto w-full">
+        <main className="flex-1 p-6 md:p-8 lg:p-8 overflow-x-hidden">
+          <div className="max-w-[1400px] mx-auto w-full">
             {children}
           </div>
         </main>
