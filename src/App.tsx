@@ -8,7 +8,20 @@ import { CorporateLogin } from './pages/CorporateLogin';
 
 // Phase 2 School Portals
 import { StudentDashboard } from './pages/school/student/StudentDashboard';
+import { StudentClasses } from './pages/school/student/StudentClasses';
 import { StudentTimetable } from './pages/school/student/StudentTimetable';
+import { StudentAttendance } from './pages/school/student/StudentAttendance';
+import { StudentHomework } from './pages/school/student/StudentHomework';
+import { StudentAssignments } from './pages/school/student/StudentAssignments';
+import { StudentExams } from './pages/school/student/StudentExams';
+import { StudentResults } from './pages/school/student/StudentResults';
+import { StudentPerformance } from './pages/school/student/StudentPerformance';
+import { StudentFees } from './pages/school/student/StudentFees';
+import { StudentCertificates } from './pages/school/student/StudentCertificates';
+import { StudentNotifications } from './pages/school/student/StudentNotifications';
+import { StudentProfile } from './pages/school/student/StudentProfile';
+import { StudentSettings } from './pages/school/student/StudentSettings';
+import { StudentHelp } from './pages/school/student/StudentHelp';
 import { TeacherDashboard } from './pages/school/teacher/TeacherDashboard';
 import { TeacherAttendance } from './pages/school/teacher/TeacherAttendance';
 import { ParentDashboard } from './pages/school/parent/ParentDashboard';
@@ -53,7 +66,20 @@ function App() {
         
         {/* Phase 2: School ERP Dashboards */}
         <Route path="/school/student" element={<StudentDashboard />} />
+        <Route path="/school/student/classes" element={<StudentClasses />} />
         <Route path="/school/student/timetable" element={<StudentTimetable />} />
+        <Route path="/school/student/attendance" element={<StudentAttendance />} />
+        <Route path="/school/student/homework" element={<StudentHomework />} />
+        <Route path="/school/student/assignments" element={<StudentAssignments />} />
+        <Route path="/school/student/exams" element={<StudentExams />} />
+        <Route path="/school/student/results" element={<StudentResults />} />
+        <Route path="/school/student/performance" element={<StudentPerformance />} />
+        <Route path="/school/student/fees" element={<StudentFees />} />
+        <Route path="/school/student/certificates" element={<StudentCertificates />} />
+        <Route path="/school/student/notifications" element={<StudentNotifications />} />
+        <Route path="/school/student/profile" element={<StudentProfile />} />
+        <Route path="/school/student/settings" element={<StudentSettings />} />
+        <Route path="/school/student/help" element={<StudentHelp />} />
         <Route path="/school/teacher" element={<TeacherDashboard />} />
         <Route path="/school/teacher/attendance" element={<TeacherAttendance />} />
         <Route path="/school/parent" element={<ParentDashboard />} />
