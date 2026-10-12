@@ -23,7 +23,19 @@ import { StudentProfile } from './pages/school/student/StudentProfile';
 import { StudentSettings } from './pages/school/student/StudentSettings';
 import { StudentHelp } from './pages/school/student/StudentHelp';
 import { TeacherDashboard } from './pages/school/teacher/TeacherDashboard';
+import { TeacherClasses } from './pages/school/teacher/TeacherClasses';
+import { TeacherStudents } from './pages/school/teacher/TeacherStudents';
 import { TeacherAttendance } from './pages/school/teacher/TeacherAttendance';
+import { TeacherHomework } from './pages/school/teacher/TeacherHomework';
+import { TeacherAssignments } from './pages/school/teacher/TeacherAssignments';
+import { TeacherExams } from './pages/school/teacher/TeacherExams';
+import { TeacherResults } from './pages/school/teacher/TeacherResults';
+import { TeacherTimetable } from './pages/school/teacher/TeacherTimetable';
+import { TeacherPerformance } from './pages/school/teacher/TeacherPerformance';
+import { TeacherAnnouncements } from './pages/school/teacher/TeacherAnnouncements';
+import { TeacherProfile } from './pages/school/teacher/TeacherProfile';
+import { TeacherSettings } from './pages/school/teacher/TeacherSettings';
+import { TeacherHelp } from './pages/school/teacher/TeacherHelp';
 import { ParentDashboard } from './pages/school/parent/ParentDashboard';
 import { ParentAttendance } from './pages/school/parent/ParentAttendance';
 import { AdminDashboard } from './pages/school/admin/AdminDashboard';
@@ -64,7 +76,7 @@ function App() {
         <Route path="/college/login" element={<CollegeLogin />} />
         <Route path="/corporate/login" element={<CorporateLogin />} />
         
-        {/* Phase 2: School ERP Dashboards */}
+        {/* Phase 2: School ERP Dashboards - Student Portal */}
         <Route path="/school/student" element={<StudentDashboard />} />
         <Route path="/school/student/classes" element={<StudentClasses />} />
         <Route path="/school/student/timetable" element={<StudentTimetable />} />
@@ -80,8 +92,23 @@ function App() {
         <Route path="/school/student/profile" element={<StudentProfile />} />
         <Route path="/school/student/settings" element={<StudentSettings />} />
         <Route path="/school/student/help" element={<StudentHelp />} />
+
+        {/* Phase 2: School ERP Dashboards - Teacher Portal */}
         <Route path="/school/teacher" element={<TeacherDashboard />} />
+        <Route path="/school/teacher/classes" element={<TeacherClasses />} />
+        <Route path="/school/teacher/students" element={<TeacherStudents />} />
         <Route path="/school/teacher/attendance" element={<TeacherAttendance />} />
+        <Route path="/school/teacher/homework" element={<TeacherHomework />} />
+        <Route path="/school/teacher/assignments" element={<TeacherAssignments />} />
+        <Route path="/school/teacher/exams" element={<TeacherExams />} />
+        <Route path="/school/teacher/results" element={<TeacherResults />} />
+        <Route path="/school/teacher/timetable" element={<TeacherTimetable />} />
+        <Route path="/school/teacher/performance" element={<TeacherPerformance />} />
+        <Route path="/school/teacher/announcements" element={<TeacherAnnouncements />} />
+        <Route path="/school/teacher/profile" element={<TeacherProfile />} />
+        <Route path="/school/teacher/settings" element={<TeacherSettings />} />
+        <Route path="/school/teacher/help" element={<TeacherHelp />} />
+
         <Route path="/school/parent" element={<ParentDashboard />} />
         <Route path="/school/parent/attendance" element={<ParentAttendance />} />
         <Route path="/school/admin" element={<AdminDashboard />} />

@@ -16,6 +16,7 @@ export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
   const location = useLocation();
   const navigation = getNavigationForRole(role);
   const mainNav = navigation.filter(g => g.groupName !== 'Account');
+  const accountNav = navigation.find(g => g.groupName === 'Account');
 
   return (
     <>
@@ -89,6 +90,32 @@ export function SchoolSidebar({ role, isOpen, onClose }: SchoolSidebarProps) {
               <span>ACCOUNT</span>
             </div>
             <div className="space-y-1">
+              {accountNav?.items.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => onClose()}
+                    className={cn(
+                      "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 group relative",
+                      isActive
+                        ? "text-blue-600 bg-blue-50/80 font-bold border-l-4 border-blue-600 rounded-l-none pl-3"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    )}
+                  >
+                    <item.icon
+                      size={18}
+                      className={cn(
+                        "transition-colors shrink-0",
+                        isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
+                      )}
+                      strokeWidth={isActive ? 2.5 : 2}
+                    />
+                    <span className="truncate">{item.name}</span>
+                  </Link>
+                );
+              })}
               <Link
                 to="/"
                 className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50/70 transition-colors group"
