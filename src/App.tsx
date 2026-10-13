@@ -54,6 +54,26 @@ import { ParentSettings } from './pages/school/parent/ParentSettings';
 import { ParentHelp } from './pages/school/parent/ParentHelp';
 import { AdminDashboard } from './pages/school/admin/AdminDashboard';
 import { AdminStudents } from './pages/school/admin/AdminStudents';
+import { AdminTeachers } from './pages/school/admin/AdminTeachers';
+import { AdminParents } from './pages/school/admin/AdminParents';
+import { AdminClasses } from './pages/school/admin/AdminClasses';
+import { AdminSubjects } from './pages/school/admin/AdminSubjects';
+import { AdminTimetable } from './pages/school/admin/AdminTimetable';
+import { AdminAttendance } from './pages/school/admin/AdminAttendance';
+import { AdminHomework } from './pages/school/admin/AdminHomework';
+import { AdminAssignments } from './pages/school/admin/AdminAssignments';
+import { AdminExams } from './pages/school/admin/AdminExams';
+import { AdminResults } from './pages/school/admin/AdminResults';
+import { AdminFees } from './pages/school/admin/AdminFees';
+import { AdminTransport } from './pages/school/admin/AdminTransport';
+import { AdminEvents } from './pages/school/admin/AdminEvents';
+import { AdminAnnouncements } from './pages/school/admin/AdminAnnouncements';
+import { AdminDocuments } from './pages/school/admin/AdminDocuments';
+import { AdminReports } from './pages/school/admin/AdminReports';
+import { AdminPerformance } from './pages/school/admin/AdminPerformance';
+import { AdminNotifications } from './pages/school/admin/AdminNotifications';
+import { AdminAuditLogs } from './pages/school/admin/AdminAuditLogs';
+import { AdminSettings } from './pages/school/admin/AdminSettings';
 import { PlaceholderDashboard } from './pages/PlaceholderDashboard';
 
 // Phase 4 Corporate Portals
@@ -140,8 +160,29 @@ function App() {
         <Route path="/school/parent/profile" element={<ParentProfile />} />
         <Route path="/school/parent/settings" element={<ParentSettings />} />
         <Route path="/school/parent/help" element={<ParentHelp />} />
+        {/* Phase 2: School ERP Dashboards - Admin Portal */}
         <Route path="/school/admin" element={<AdminDashboard />} />
         <Route path="/school/admin/students" element={<AdminStudents />} />
+        <Route path="/school/admin/teachers" element={<AdminTeachers />} />
+        <Route path="/school/admin/parents" element={<AdminParents />} />
+        <Route path="/school/admin/classes" element={<AdminClasses />} />
+        <Route path="/school/admin/subjects" element={<AdminSubjects />} />
+        <Route path="/school/admin/timetable" element={<AdminTimetable />} />
+        <Route path="/school/admin/attendance" element={<AdminAttendance />} />
+        <Route path="/school/admin/homework" element={<AdminHomework />} />
+        <Route path="/school/admin/assignments" element={<AdminAssignments />} />
+        <Route path="/school/admin/exams" element={<AdminExams />} />
+        <Route path="/school/admin/results" element={<AdminResults />} />
+        <Route path="/school/admin/fees" element={<AdminFees />} />
+        <Route path="/school/admin/transport" element={<AdminTransport />} />
+        <Route path="/school/admin/events" element={<AdminEvents />} />
+        <Route path="/school/admin/announcements" element={<AdminAnnouncements />} />
+        <Route path="/school/admin/documents" element={<AdminDocuments />} />
+        <Route path="/school/admin/reports" element={<AdminReports />} />
+        <Route path="/school/admin/performance" element={<AdminPerformance />} />
+        <Route path="/school/admin/notifications" element={<AdminNotifications />} />
+        <Route path="/school/admin/audit-logs" element={<AdminAuditLogs />} />
+        <Route path="/school/admin/settings" element={<AdminSettings />} />
 
         {/* Phase 2: Specific placeholder sub-routes mapping to App Shell */}
         <Route path="/school/:role/*" element={<PlaceholderDashboard />} />
