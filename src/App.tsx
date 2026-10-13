@@ -37,7 +37,21 @@ import { TeacherProfile } from './pages/school/teacher/TeacherProfile';
 import { TeacherSettings } from './pages/school/teacher/TeacherSettings';
 import { TeacherHelp } from './pages/school/teacher/TeacherHelp';
 import { ParentDashboard } from './pages/school/parent/ParentDashboard';
+import { ParentChildren } from './pages/school/parent/ParentChildren';
 import { ParentAttendance } from './pages/school/parent/ParentAttendance';
+import { ParentPerformance } from './pages/school/parent/ParentPerformance';
+import { ParentHomework } from './pages/school/parent/ParentHomework';
+import { ParentAssignments } from './pages/school/parent/ParentAssignments';
+import { ParentResults } from './pages/school/parent/ParentResults';
+import { ParentFees } from './pages/school/parent/ParentFees';
+import { ParentTimetable } from './pages/school/parent/ParentTimetable';
+import { ParentRemarks } from './pages/school/parent/ParentRemarks';
+import { ParentProgress } from './pages/school/parent/ParentProgress';
+import { ParentNotifications } from './pages/school/parent/ParentNotifications';
+import { ParentEvents } from './pages/school/parent/ParentEvents';
+import { ParentProfile } from './pages/school/parent/ParentProfile';
+import { ParentSettings } from './pages/school/parent/ParentSettings';
+import { ParentHelp } from './pages/school/parent/ParentHelp';
 import { AdminDashboard } from './pages/school/admin/AdminDashboard';
 import { AdminStudents } from './pages/school/admin/AdminStudents';
 import { PlaceholderDashboard } from './pages/PlaceholderDashboard';
@@ -109,8 +123,23 @@ function App() {
         <Route path="/school/teacher/settings" element={<TeacherSettings />} />
         <Route path="/school/teacher/help" element={<TeacherHelp />} />
 
+        {/* Phase 2: School ERP Dashboards - Parent Portal */}
         <Route path="/school/parent" element={<ParentDashboard />} />
+        <Route path="/school/parent/children" element={<ParentChildren />} />
         <Route path="/school/parent/attendance" element={<ParentAttendance />} />
+        <Route path="/school/parent/performance" element={<ParentPerformance />} />
+        <Route path="/school/parent/homework" element={<ParentHomework />} />
+        <Route path="/school/parent/assignments" element={<ParentAssignments />} />
+        <Route path="/school/parent/results" element={<ParentResults />} />
+        <Route path="/school/parent/fees" element={<ParentFees />} />
+        <Route path="/school/parent/timetable" element={<ParentTimetable />} />
+        <Route path="/school/parent/remarks" element={<ParentRemarks />} />
+        <Route path="/school/parent/progress" element={<ParentProgress />} />
+        <Route path="/school/parent/notifications" element={<ParentNotifications />} />
+        <Route path="/school/parent/events" element={<ParentEvents />} />
+        <Route path="/school/parent/profile" element={<ParentProfile />} />
+        <Route path="/school/parent/settings" element={<ParentSettings />} />
+        <Route path="/school/parent/help" element={<ParentHelp />} />
         <Route path="/school/admin" element={<AdminDashboard />} />
         <Route path="/school/admin/students" element={<AdminStudents />} />
 
