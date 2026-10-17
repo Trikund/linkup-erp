@@ -26,22 +26,25 @@ export const ParentProfile: React.FC = () => {
       description="Registered family records, residential address, emergency doctor contacts, and authorized school gate escorts."
     >
       <div className="space-y-6">
-        {/* Top Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Parent & Guardian Institutional Dossier</h1>
-          <p className="text-sm text-gray-600 mt-1">
-            Registered family records, residential address, emergency doctor contacts, and authorized school gate escorts.
-          </p>
-        </div>
+        {/* Action Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+              <User className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-slate-900">Family Master Record & KYC Registry</h2>
+              <p className="text-xs text-slate-500">Official CBSE School Records • Wards: Rahul Sharma (10-A) & Ananya Sharma (7-B)</p>
+            </div>
+          </div>
 
-        <button
-          onClick={() => setIsEditModalOpen(true)}
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition-colors shadow-sm self-start md:self-auto"
-        >
-          <Edit3 className="w-4 h-4" /> Request Contact / Address Update
-        </button>
-      </div>
+          <button
+            onClick={() => setIsEditModalOpen(true)}
+            className="flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 transition-colors shadow-sm self-start sm:self-auto"
+          >
+            <Edit3 className="w-4 h-4" /> Request Contact / Address Update
+          </button>
+        </div>
 
       {/* Primary & Secondary Guardian Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

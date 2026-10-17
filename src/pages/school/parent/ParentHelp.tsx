@@ -70,109 +70,101 @@ export const ParentHelp: React.FC = () => {
       description="Direct contact directory for school departments, frequently asked questions, and official support ticket submission."
     >
       <div className="space-y-6">
-        {/* Top Banner */}
-      <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-        <h1 className="text-2xl font-bold text-gray-900">Parent Helpdesk & School Directory</h1>
-        <p className="text-sm text-gray-600 mt-1">
-          Direct contact directory for school departments, frequently asked questions, and official support ticket submission.
-        </p>
-      </div>
-
-      {/* Official School Contact Directory Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* Card 1: Reception */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg"><Phone className="w-5 h-5" /></div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-900">Main Reception & Admin</h3>
-              <p className="text-xs text-gray-500">General queries & appointments</p>
+        {/* Official School Contact Directory Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Card 1: Reception */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-blue-50 text-blue-600 rounded-xl"><Phone className="w-5 h-5" /></div>
+              <div>
+                <h3 className="text-sm font-bold text-slate-900">Main Reception & Admin</h3>
+                <p className="text-xs text-slate-500">General queries & appointments</p>
+              </div>
+            </div>
+            <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+              <div>Phone: <strong className="text-slate-900">+91 11 2894 7100 (Ext 101)</strong></div>
+              <div>Email: <strong className="text-slate-900">reception@greenfieldacademy.edu.in</strong></div>
+              <div className="text-slate-500">Hours: Mon – Sat (08:00 AM – 03:30 PM)</div>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Phone: <strong className="text-gray-900">+91 124 456 7890 (Ext 101)</strong></div>
-            <div>Email: <strong className="text-gray-900">reception@dpsgurugram.edu.in</strong></div>
-            <div className="text-gray-500">Hours: Mon – Sat (08:00 AM – 03:30 PM)</div>
-          </div>
-        </div>
 
-        {/* Card 2: Accounts */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-lg"><CreditCard className="w-5 h-5" /></div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-900">Accounts & Fee Treasury</h3>
-              <p className="text-xs text-gray-500">Tuition, receipts & 80C certificates</p>
+          {/* Card 2: Accounts */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl"><CreditCard className="w-5 h-5" /></div>
+              <div>
+                <h3 className="text-sm font-bold text-slate-900">Accounts & Fee Treasury</h3>
+                <p className="text-xs text-slate-500">Tuition, receipts & 80C certificates</p>
+              </div>
+            </div>
+            <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+              <div>Phone: <strong className="text-slate-900">+91 11 2894 7102 (Ext 104)</strong></div>
+              <div>Email: <strong className="text-slate-900">accounts@greenfieldacademy.edu.in</strong></div>
+              <div className="text-slate-500">Counter: 09:00 AM – 02:00 PM</div>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Phone: <strong className="text-gray-900">+91 124 456 7892 (Ext 104)</strong></div>
-            <div>Email: <strong className="text-gray-900">accounts@dpsgurugram.edu.in</strong></div>
-            <div className="text-gray-500">Counter: 09:00 AM – 02:00 PM</div>
-          </div>
-        </div>
 
         {/* Card 3: Transport */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-amber-50 text-amber-600 rounded-lg"><Bus className="w-5 h-5" /></div>
+            <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl"><Bus className="w-5 h-5" /></div>
             <div>
-              <h3 className="text-sm font-bold text-gray-900">Transport & Bus Fleet</h3>
-              <p className="text-xs text-gray-500">Route #14 in-charge Mr. Balram</p>
+              <h3 className="text-sm font-bold text-slate-900">Transport & Bus Command</h3>
+              <p className="text-xs text-slate-500">Route #14 GPS & driver helpline</p>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Mobile: <strong className="text-gray-900">+91 98112 34567</strong></div>
-            <div>Control Room: <strong className="text-gray-900">+91 124 456 7894</strong></div>
-            <div className="text-gray-500">Helpline active during bus runs (06:30 – 17:00)</div>
+          <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+            <div>Mobile: <strong className="text-slate-900">+91 94102 38910 (Mr. Balram)</strong></div>
+            <div>Control Room: <strong className="text-slate-900">+91 11 2894 7105</strong></div>
+            <div className="text-slate-500">Helpline active during bus runs (06:30 – 17:00)</div>
           </div>
         </div>
 
         {/* Card 4: Examination Cell */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-purple-50 text-purple-600 rounded-lg"><BookOpen className="w-5 h-5" /></div>
+            <div className="p-2.5 bg-purple-50 text-purple-600 rounded-xl"><BookOpen className="w-5 h-5" /></div>
             <div>
-              <h3 className="text-sm font-bold text-gray-900">CBSE Examination Wing</h3>
-              <p className="text-xs text-gray-500">Class 10 LOC, admit cards & marks</p>
+              <h3 className="text-sm font-bold text-slate-900">CBSE Examination Wing</h3>
+              <p className="text-xs text-slate-500">Class 10 LOC, admit cards & marks</p>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Phone: <strong className="text-gray-900">+91 124 456 7893 (Ext 106)</strong></div>
-            <div>Email: <strong className="text-gray-900">cbse.cell@dpsgurugram.edu.in</strong></div>
-            <div className="text-gray-500">Coordinator: Dr. A.K. Srivastava</div>
+          <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+            <div>Phone: <strong className="text-slate-900">+91 11 2894 7103 (Ext 106)</strong></div>
+            <div>Email: <strong className="text-slate-900">cbse.cell@greenfieldacademy.edu.in</strong></div>
+            <div className="text-slate-500">Coordinator: Dr. Rajesh Sen</div>
           </div>
         </div>
 
         {/* Card 5: Infirmary */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-rose-50 text-rose-600 rounded-lg"><Heart className="w-5 h-5" /></div>
+            <div className="p-2.5 bg-rose-50 text-rose-600 rounded-xl"><Heart className="w-5 h-5" /></div>
             <div>
-              <h3 className="text-sm font-bold text-gray-900">Medical Infirmary</h3>
-              <p className="text-xs text-gray-500">First aid, allergies & health logs</p>
+              <h3 className="text-sm font-bold text-slate-900">Medical Infirmary</h3>
+              <p className="text-xs text-slate-500">First aid, allergies & health logs</p>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Phone: <strong className="text-gray-900">+91 124 456 7898</strong></div>
-            <div>Incharge: <strong className="text-gray-900">Dr. Anita (Resident MO)</strong></div>
-            <div className="text-gray-500">On duty 24/7 during school & sports hours</div>
+          <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+            <div>Phone: <strong className="text-slate-900">+91 11 2894 7108</strong></div>
+            <div>Incharge: <strong className="text-slate-900">Dr. Anita (Resident MO)</strong></div>
+            <div className="text-slate-500">On duty 24/7 during school & sports hours</div>
           </div>
         </div>
 
         {/* Card 6: Counselor */}
-        <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-teal-50 text-teal-600 rounded-lg"><User className="w-5 h-5" /></div>
+            <div className="p-2.5 bg-teal-50 text-teal-600 rounded-xl"><User className="w-5 h-5" /></div>
             <div>
-              <h3 className="text-sm font-bold text-gray-900">Student Counseling Cell</h3>
-              <p className="text-xs text-gray-500">Wellbeing & career guidance</p>
+              <h3 className="text-sm font-bold text-slate-900">Student Counseling Cell</h3>
+              <p className="text-xs text-slate-500">Wellbeing & career guidance</p>
             </div>
           </div>
-          <div className="text-xs text-gray-700 space-y-1.5 border-t border-gray-100 pt-3">
-            <div>Phone: <strong className="text-gray-900">+91 124 456 7895</strong></div>
-            <div>Counselor: <strong className="text-gray-900">Ms. Ritu Sen (Child Psychologist)</strong></div>
-            <div className="text-gray-500">Confidential appointments available</div>
+          <div className="text-xs text-slate-700 space-y-1.5 border-t border-slate-100 pt-3">
+            <div>Phone: <strong className="text-slate-900">+91 11 2894 7109</strong></div>
+            <div>Counselor: <strong className="text-slate-900">Ms. Ritu Sen (Child Psychologist)</strong></div>
+            <div className="text-slate-500">Confidential appointments available</div>
           </div>
         </div>
       </div>

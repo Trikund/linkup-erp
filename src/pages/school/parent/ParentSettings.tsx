@@ -37,29 +37,32 @@ export const ParentSettings: React.FC = () => {
       description="Configure instant SMS alerts, WhatsApp homework digests, GPS bus proximity triggers, and account security."
     >
       <div className="space-y-6">
-        {/* Top Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Portal Settings & Alert Preferences</h1>
-          <p className="text-sm text-gray-600 mt-1">
-            Configure instant SMS alerts, WhatsApp homework digests, GPS bus proximity triggers, and account security.
-          </p>
+        {/* Action Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+              <Settings className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-slate-900">Communication & Privacy Gateways</h2>
+              <p className="text-xs text-slate-500">Session 2026-27 Active Profiles: Rahul Sharma & Ananya Sharma</p>
+            </div>
+          </div>
+
+          <button
+            onClick={handleSave}
+            className="flex items-center justify-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 transition-colors shadow-sm self-start sm:self-auto"
+          >
+            <CheckCircle2 className="w-4 h-4" /> Save Preferences
+          </button>
         </div>
 
-        <button
-          onClick={handleSave}
-          className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition-colors shadow-sm self-start md:self-auto"
-        >
-          <CheckCircle2 className="w-4 h-4" /> Save Preferences
-        </button>
-      </div>
-
-      {savedBanner && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3 text-emerald-900 text-xs font-semibold">
-          <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-          <span>Your parent communication and security preferences have been updated across SMS, WhatsApp, and Email gateways.</span>
-        </div>
-      )}
+        {savedBanner && (
+          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3 text-emerald-900 text-xs font-semibold animate-in fade-in duration-150">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <span>Your parent communication and security preferences have been updated across SMS, WhatsApp, and Email gateways.</span>
+          </div>
+        )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Notification Toggles */}
