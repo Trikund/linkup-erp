@@ -3,7 +3,7 @@ import {
   Award, TrendingUp, CreditCard, FileBadge, Briefcase, 
   Bell, User, Users, Building, Calendar, Settings, FileBox,
   GraduationCap, BookMarked, HelpCircle, ShieldCheck, UserCheck,
-  CalendarCheck, MessageSquare
+  CalendarCheck, MessageSquare, Layers, Home
 } from 'lucide-react';
 
 export interface CollegeNavItem {
@@ -153,17 +153,56 @@ export const collegeParentNavGroups: CollegeNavGroup[] = [
   }
 ];
 
+export const collegeAdminNavGroups: CollegeNavGroup[] = [
+  {
+    groupName: 'Academic & Governance',
+    items: [
+      { label: 'Institution Dashboard', path: '/college/admin/dashboard', icon: LayoutDashboard },
+      { label: 'Departments & Cells', path: '/college/admin/departments', icon: Building, badge: '14 Depts', badgeColor: 'blue' },
+      { label: 'Programs & Courses', path: '/college/admin/courses', icon: BookOpen },
+      { label: 'Batches & Sections', path: '/college/admin/batches', icon: Layers }
+    ]
+  },
+  {
+    groupName: 'People & Stakeholders',
+    items: [
+      { label: 'Students Directory', path: '/college/admin/students', icon: Users, badge: '12,450', badgeColor: 'violet' },
+      { label: 'Faculty & Cadre', path: '/college/admin/faculty', icon: GraduationCap, badge: '842', badgeColor: 'green' },
+      { label: 'Parents & Guardians', path: '/college/admin/parents', icon: UserCheck }
+    ]
+  },
+  {
+    groupName: 'Academic Operations & Exams',
+    items: [
+      { label: 'Master Timetable', path: '/college/admin/timetable', icon: Calendar },
+      { label: 'Campus Attendance', path: '/college/admin/attendance', icon: CheckSquare },
+      { label: 'Controller of Exams (COE)', path: '/college/admin/exams', icon: FileBadge, badge: 'Exam Cell', badgeColor: 'amber' },
+      { label: 'Grading & Transcripts', path: '/college/admin/results', icon: Award }
+    ]
+  },
+  {
+    groupName: 'Finance, Campus & Career',
+    items: [
+      { label: 'Fee Management & Accounts', path: '/college/admin/fees', icon: CreditCard, badge: '₹42.8 Cr', badgeColor: 'green' },
+      { label: 'Hostel & Residential Life', path: '/college/admin/hostel', icon: Home },
+      { label: 'Training & Placements (T&P)', path: '/college/admin/placements', icon: Briefcase, badge: '89.4%', badgeColor: 'green' },
+      { label: 'Research & Innovation', path: '/college/admin/research', icon: BookMarked }
+    ]
+  },
+  {
+    groupName: 'Administration & Compliance',
+    items: [
+      { label: 'Institutional Circulars', path: '/college/admin/announcements', icon: Bell, badge: '4 New', badgeColor: 'blue' },
+      { label: 'Accreditation & NAAC/NIRF', path: '/college/admin/reports', icon: FileBox },
+      { label: 'System Audit Logs', path: '/college/admin/audit-logs', icon: ShieldCheck },
+      { label: 'Institution Settings', path: '/college/admin/settings', icon: Settings }
+    ]
+  }
+];
+
 export const collegeNavigation = {
   student: collegeStudentNavGroups.flatMap(g => g.items),
   faculty: collegeFacultyNavGroups.flatMap(g => g.items),
   parent: collegeParentNavGroups.flatMap(g => g.items),
-  admin: [
-    { label: 'Dashboard', path: '/college/admin/dashboard', icon: LayoutDashboard },
-    { label: 'Students', path: '/college/admin/students', icon: Users },
-    { label: 'Faculty', path: '/college/admin/faculty', icon: Users },
-    { label: 'Departments', path: '/college/admin/departments', icon: Building },
-    { label: 'Courses', path: '/college/admin/courses', icon: BookOpen },
-    { label: 'Reports', path: '/college/admin/reports', icon: FileBox },
-    { label: 'Settings', path: '/college/admin/settings', icon: Settings }
-  ]
+  admin: collegeAdminNavGroups.flatMap(g => g.items)
 };

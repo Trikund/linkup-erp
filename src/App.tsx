@@ -138,6 +138,24 @@ import { ParentHelp as CollegeParentHelp } from './pages/college/parent/ParentHe
 import { ParentSettings as CollegeParentSettings } from './pages/college/parent/ParentSettings';
 import { ParentProfile as CollegeParentProfile } from './pages/college/parent/ParentProfile';
 import { AdminDashboard as CollegeAdminDashboard } from './pages/college/admin/AdminDashboard';
+import { AdminDepartments as CollegeAdminDepartments } from './pages/college/admin/AdminDepartments';
+import { AdminCourses as CollegeAdminCourses } from './pages/college/admin/AdminCourses';
+import { AdminBatches as CollegeAdminBatches } from './pages/college/admin/AdminBatches';
+import { AdminStudents as CollegeAdminStudents } from './pages/college/admin/AdminStudents';
+import { AdminFaculty as CollegeAdminFaculty } from './pages/college/admin/AdminFaculty';
+import { AdminParents as CollegeAdminParents } from './pages/college/admin/AdminParents';
+import { AdminTimetable as CollegeAdminTimetable } from './pages/college/admin/AdminTimetable';
+import { AdminAttendance as CollegeAdminAttendance } from './pages/college/admin/AdminAttendance';
+import { AdminExams as CollegeAdminExams } from './pages/college/admin/AdminExams';
+import { AdminResults as CollegeAdminResults } from './pages/college/admin/AdminResults';
+import { AdminFees as CollegeAdminFees } from './pages/college/admin/AdminFees';
+import { AdminHostel as CollegeAdminHostel } from './pages/college/admin/AdminHostel';
+import { AdminPlacements as CollegeAdminPlacements } from './pages/college/admin/AdminPlacements';
+import { AdminResearch as CollegeAdminResearch } from './pages/college/admin/AdminResearch';
+import { AdminAnnouncements as CollegeAdminAnnouncements } from './pages/college/admin/AdminAnnouncements';
+import { AdminReports as CollegeAdminReports } from './pages/college/admin/AdminReports';
+import { AdminAuditLogs as CollegeAdminAuditLogs } from './pages/college/admin/AdminAuditLogs';
+import { AdminSettings as CollegeAdminSettings } from './pages/college/admin/AdminSettings';
 import { PlaceholderCollege } from './pages/college/PlaceholderCollege';
 
 
@@ -296,6 +314,24 @@ function App() {
         
         <Route path="/college/admin" element={<Navigate to="/college/admin/dashboard" replace />} />
         <Route path="/college/admin/dashboard" element={<CollegeAdminDashboard />} />
+        <Route path="/college/admin/departments" element={<CollegeAdminDepartments />} />
+        <Route path="/college/admin/courses" element={<CollegeAdminCourses />} />
+        <Route path="/college/admin/batches" element={<CollegeAdminBatches />} />
+        <Route path="/college/admin/students" element={<CollegeAdminStudents />} />
+        <Route path="/college/admin/faculty" element={<CollegeAdminFaculty />} />
+        <Route path="/college/admin/parents" element={<CollegeAdminParents />} />
+        <Route path="/college/admin/timetable" element={<CollegeAdminTimetable />} />
+        <Route path="/college/admin/attendance" element={<CollegeAdminAttendance />} />
+        <Route path="/college/admin/exams" element={<CollegeAdminExams />} />
+        <Route path="/college/admin/results" element={<CollegeAdminResults />} />
+        <Route path="/college/admin/fees" element={<CollegeAdminFees />} />
+        <Route path="/college/admin/hostel" element={<CollegeAdminHostel />} />
+        <Route path="/college/admin/placements" element={<CollegeAdminPlacements />} />
+        <Route path="/college/admin/research" element={<CollegeAdminResearch />} />
+        <Route path="/college/admin/announcements" element={<CollegeAdminAnnouncements />} />
+        <Route path="/college/admin/reports" element={<CollegeAdminReports />} />
+        <Route path="/college/admin/audit-logs" element={<CollegeAdminAuditLogs />} />
+        <Route path="/college/admin/settings" element={<CollegeAdminSettings />} />
         <Route path="/college/admin/*" element={<PlaceholderCollege role="admin" />} />
 
         

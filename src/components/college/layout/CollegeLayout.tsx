@@ -12,6 +12,7 @@ interface CollegeLayoutProps {
   };
   title?: string;
   description?: string;
+  breadcrumbs?: { label: string; path?: string }[];
   children: React.ReactNode;
 }
 
