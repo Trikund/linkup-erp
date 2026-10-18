@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LogOut, X } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 import { Logo } from '../../brand/Logo';
-import { collegeStudentNavGroups, collegeFacultyNavGroups, collegeNavigation, CollegeNavGroup } from '../../../config/college/navigation';
+import { collegeStudentNavGroups, collegeFacultyNavGroups, collegeParentNavGroups, collegeNavigation, CollegeNavGroup } from '../../../config/college/navigation';
 import { CollegeRole } from '../../../types/college';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -17,11 +17,13 @@ export function CollegeSidebar({ role, isOpen, onClose }: CollegeSidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // If role is student or faculty, use rich grouped navigation.
+  // If role is student, faculty, or parent, use rich grouped navigation.
   const groups: CollegeNavGroup[] = role === 'student' 
     ? collegeStudentNavGroups 
     : role === 'faculty'
     ? collegeFacultyNavGroups
+    : role === 'parent'
+    ? collegeParentNavGroups
     : [
         {
           groupName: 'Menu',
@@ -60,7 +62,7 @@ export function CollegeSidebar({ role, isOpen, onClose }: CollegeSidebarProps) {
             <Logo />
             <div className="mt-2.5 px-0.5">
               <h2 className="text-xs font-black uppercase tracking-wider text-[#7c3aed]">
-                {role === 'faculty' ? 'Faculty Portal' : role === 'student' ? 'Student Portal' : 'College Portal'}
+                {role === 'faculty' ? 'Faculty Portal' : role === 'student' ? 'Student Portal' : role === 'parent' ? 'Parent Portal' : 'College Portal'}
               </h2>
               <p className="text-xs font-semibold text-slate-700">Apex Institute of Technology</p>
             </div>
@@ -83,7 +85,7 @@ export function CollegeSidebar({ role, isOpen, onClose }: CollegeSidebarProps) {
               </div>
               <div className="space-y-0.5">
                 {group.items.map((item) => {
-                  const isDashboard = item.path === '/college/student/dashboard' || item.path === '/college/faculty/dashboard';
+                  const isDashboard = item.path === '/college/student/dashboard' || item.path === '/college/faculty/dashboard' || item.path === '/college/parent/dashboard';
                   const isActive = location.pathname === item.path || 
                     (!isDashboard && location.pathname.startsWith(item.path));
                   

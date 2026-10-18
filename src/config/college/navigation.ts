@@ -2,7 +2,8 @@ import {
   LayoutDashboard, BookOpen, Clock, CheckSquare, FileText, 
   Award, TrendingUp, CreditCard, FileBadge, Briefcase, 
   Bell, User, Users, Building, Calendar, Settings, FileBox,
-  GraduationCap, BookMarked, HelpCircle, ShieldCheck, UserCheck
+  GraduationCap, BookMarked, HelpCircle, ShieldCheck, UserCheck,
+  CalendarCheck, MessageSquare
 } from 'lucide-react';
 
 export interface CollegeNavItem {
@@ -108,16 +109,54 @@ export const collegeFacultyNavGroups: CollegeNavGroup[] = [
   }
 ];
 
+export const collegeParentNavGroups: CollegeNavGroup[] = [
+  {
+    groupName: 'Academic Ward Overview',
+    items: [
+      { label: 'Parent Dashboard', path: '/college/parent/dashboard', icon: LayoutDashboard },
+      { label: 'Ward Profile & Enrollment', path: '/college/parent/ward', icon: UserCheck },
+      { label: 'Weekly Timetable', path: '/college/parent/timetable', icon: Calendar }
+    ]
+  },
+  {
+    groupName: 'Academics & Performance',
+    items: [
+      { label: 'Attendance Tracking', path: '/college/parent/attendance', icon: CheckSquare, badge: '86.4%', badgeColor: 'green' },
+      { label: 'Results & CGPA', path: '/college/parent/results', icon: Award, badge: '8.42', badgeColor: 'violet' },
+      { label: 'Assignments & Labs', path: '/college/parent/assignments', icon: FileText, badge: '4 Active', badgeColor: 'amber' },
+      { label: 'Performance Analytics', path: '/college/parent/performance', icon: TrendingUp }
+    ]
+  },
+  {
+    groupName: 'Career & Campus Life',
+    items: [
+      { label: 'Placements & Internships', path: '/college/parent/placements', icon: Briefcase, badge: 'Placed', badgeColor: 'green' },
+      { label: 'Hostel & Mess Facility', path: '/college/parent/hostel', icon: Building },
+      { label: 'Faculty Mentor Remarks', path: '/college/parent/remarks', icon: MessageSquare, badge: 'New', badgeColor: 'blue' }
+    ]
+  },
+  {
+    groupName: 'Finance & Administration',
+    items: [
+      { label: 'Fee Ledger & Receipts', path: '/college/parent/fees', icon: CreditCard, badge: 'Cleared', badgeColor: 'green' },
+      { label: 'Notices & Circulars', path: '/college/parent/notifications', icon: Bell, badge: '3 New', badgeColor: 'blue' },
+      { label: 'Events & Calendar', path: '/college/parent/events', icon: CalendarCheck }
+    ]
+  },
+  {
+    groupName: 'Account',
+    items: [
+      { label: 'Help & Grievance Cell', path: '/college/parent/help', icon: HelpCircle },
+      { label: 'Settings & Alerts', path: '/college/parent/settings', icon: Settings },
+      { label: 'Parent Profile', path: '/college/parent/profile', icon: User }
+    ]
+  }
+];
+
 export const collegeNavigation = {
   student: collegeStudentNavGroups.flatMap(g => g.items),
   faculty: collegeFacultyNavGroups.flatMap(g => g.items),
-  parent: [
-    { label: 'Dashboard', path: '/college/parent/dashboard', icon: LayoutDashboard },
-    { label: 'Attendance', path: '/college/parent/attendance', icon: CheckSquare },
-    { label: 'Results & CGPA', path: '/college/parent/results', icon: Award },
-    { label: 'Fees', path: '/college/parent/fees', icon: CreditCard },
-    { label: 'Profile', path: '/college/parent/profile', icon: User }
-  ],
+  parent: collegeParentNavGroups.flatMap(g => g.items),
   admin: [
     { label: 'Dashboard', path: '/college/admin/dashboard', icon: LayoutDashboard },
     { label: 'Students', path: '/college/admin/students', icon: Users },

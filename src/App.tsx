@@ -122,6 +122,21 @@ import { FacultyHelp as CollegeFacultyHelp } from './pages/college/faculty/Facul
 import { FacultySettings as CollegeFacultySettings } from './pages/college/faculty/FacultySettings';
 import { FacultyProfile as CollegeFacultyProfile } from './pages/college/faculty/FacultyProfile';
 import { ParentDashboard as CollegeParentDashboard } from './pages/college/parent/ParentDashboard';
+import { ParentWard as CollegeParentWard } from './pages/college/parent/ParentWard';
+import { ParentTimetable as CollegeParentTimetable } from './pages/college/parent/ParentTimetable';
+import { ParentAttendance as CollegeParentAttendance } from './pages/college/parent/ParentAttendance';
+import { ParentResults as CollegeParentResults } from './pages/college/parent/ParentResults';
+import { ParentAssignments as CollegeParentAssignments } from './pages/college/parent/ParentAssignments';
+import { ParentPerformance as CollegeParentPerformance } from './pages/college/parent/ParentPerformance';
+import { ParentPlacements as CollegeParentPlacements } from './pages/college/parent/ParentPlacements';
+import { ParentHostel as CollegeParentHostel } from './pages/college/parent/ParentHostel';
+import { ParentRemarks as CollegeParentRemarks } from './pages/college/parent/ParentRemarks';
+import { ParentFees as CollegeParentFees } from './pages/college/parent/ParentFees';
+import { ParentNotifications as CollegeParentNotifications } from './pages/college/parent/ParentNotifications';
+import { ParentEvents as CollegeParentEvents } from './pages/college/parent/ParentEvents';
+import { ParentHelp as CollegeParentHelp } from './pages/college/parent/ParentHelp';
+import { ParentSettings as CollegeParentSettings } from './pages/college/parent/ParentSettings';
+import { ParentProfile as CollegeParentProfile } from './pages/college/parent/ParentProfile';
 import { AdminDashboard as CollegeAdminDashboard } from './pages/college/admin/AdminDashboard';
 import { PlaceholderCollege } from './pages/college/PlaceholderCollege';
 
@@ -262,6 +277,21 @@ function App() {
         
         <Route path="/college/parent" element={<Navigate to="/college/parent/dashboard" replace />} />
         <Route path="/college/parent/dashboard" element={<CollegeParentDashboard />} />
+        <Route path="/college/parent/ward" element={<CollegeParentWard />} />
+        <Route path="/college/parent/timetable" element={<CollegeParentTimetable />} />
+        <Route path="/college/parent/attendance" element={<CollegeParentAttendance />} />
+        <Route path="/college/parent/results" element={<CollegeParentResults />} />
+        <Route path="/college/parent/assignments" element={<CollegeParentAssignments />} />
+        <Route path="/college/parent/performance" element={<CollegeParentPerformance />} />
+        <Route path="/college/parent/placements" element={<CollegeParentPlacements />} />
+        <Route path="/college/parent/hostel" element={<CollegeParentHostel />} />
+        <Route path="/college/parent/remarks" element={<CollegeParentRemarks />} />
+        <Route path="/college/parent/fees" element={<CollegeParentFees />} />
+        <Route path="/college/parent/notifications" element={<CollegeParentNotifications />} />
+        <Route path="/college/parent/events" element={<CollegeParentEvents />} />
+        <Route path="/college/parent/help" element={<CollegeParentHelp />} />
+        <Route path="/college/parent/settings" element={<CollegeParentSettings />} />
+        <Route path="/college/parent/profile" element={<CollegeParentProfile />} />
         <Route path="/college/parent/*" element={<PlaceholderCollege role="parent" />} />
         
         <Route path="/college/admin" element={<Navigate to="/college/admin/dashboard" replace />} />
