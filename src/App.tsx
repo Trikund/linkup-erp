@@ -105,6 +105,22 @@ import { StudentHelp as CollegeStudentHelp } from './pages/college/student/Stude
 import { StudentSettings as CollegeStudentSettings } from './pages/college/student/StudentSettings';
 import { StudentProfile as CollegeStudentProfile } from './pages/college/student/StudentProfile';
 import { FacultyDashboard as CollegeFacultyDashboard } from './pages/college/faculty/FacultyDashboard';
+import { FacultyCourses as CollegeFacultyCourses } from './pages/college/faculty/FacultyCourses';
+import { FacultyStudents as CollegeFacultyStudents } from './pages/college/faculty/FacultyStudents';
+import { FacultyAttendance as CollegeFacultyAttendance } from './pages/college/faculty/FacultyAttendance';
+import { FacultySchedule as CollegeFacultySchedule } from './pages/college/faculty/FacultySchedule';
+import { FacultyAssignments as CollegeFacultyAssignments } from './pages/college/faculty/FacultyAssignments';
+import { FacultyExams as CollegeFacultyExams } from './pages/college/faculty/FacultyExams';
+import { FacultyResults as CollegeFacultyResults } from './pages/college/faculty/FacultyResults';
+import { FacultyMentees as CollegeFacultyMentees } from './pages/college/faculty/FacultyMentees';
+import { FacultyProjects as CollegeFacultyProjects } from './pages/college/faculty/FacultyProjects';
+import { FacultyDepartment as CollegeFacultyDepartment } from './pages/college/faculty/FacultyDepartment';
+import { FacultyResearch as CollegeFacultyResearch } from './pages/college/faculty/FacultyResearch';
+import { FacultyAnnouncements as CollegeFacultyAnnouncements } from './pages/college/faculty/FacultyAnnouncements';
+import { FacultyLeaves as CollegeFacultyLeaves } from './pages/college/faculty/FacultyLeaves';
+import { FacultyHelp as CollegeFacultyHelp } from './pages/college/faculty/FacultyHelp';
+import { FacultySettings as CollegeFacultySettings } from './pages/college/faculty/FacultySettings';
+import { FacultyProfile as CollegeFacultyProfile } from './pages/college/faculty/FacultyProfile';
 import { ParentDashboard as CollegeParentDashboard } from './pages/college/parent/ParentDashboard';
 import { AdminDashboard as CollegeAdminDashboard } from './pages/college/admin/AdminDashboard';
 import { PlaceholderCollege } from './pages/college/PlaceholderCollege';
@@ -226,6 +242,22 @@ function App() {
         
         <Route path="/college/faculty" element={<Navigate to="/college/faculty/dashboard" replace />} />
         <Route path="/college/faculty/dashboard" element={<CollegeFacultyDashboard />} />
+        <Route path="/college/faculty/courses" element={<CollegeFacultyCourses />} />
+        <Route path="/college/faculty/students" element={<CollegeFacultyStudents />} />
+        <Route path="/college/faculty/attendance" element={<CollegeFacultyAttendance />} />
+        <Route path="/college/faculty/schedule" element={<CollegeFacultySchedule />} />
+        <Route path="/college/faculty/assignments" element={<CollegeFacultyAssignments />} />
+        <Route path="/college/faculty/exams" element={<CollegeFacultyExams />} />
+        <Route path="/college/faculty/results" element={<CollegeFacultyResults />} />
+        <Route path="/college/faculty/mentees" element={<CollegeFacultyMentees />} />
+        <Route path="/college/faculty/projects" element={<CollegeFacultyProjects />} />
+        <Route path="/college/faculty/department" element={<CollegeFacultyDepartment />} />
+        <Route path="/college/faculty/research" element={<CollegeFacultyResearch />} />
+        <Route path="/college/faculty/announcements" element={<CollegeFacultyAnnouncements />} />
+        <Route path="/college/faculty/leaves" element={<CollegeFacultyLeaves />} />
+        <Route path="/college/faculty/help" element={<CollegeFacultyHelp />} />
+        <Route path="/college/faculty/settings" element={<CollegeFacultySettings />} />
+        <Route path="/college/faculty/profile" element={<CollegeFacultyProfile />} />
         <Route path="/college/faculty/*" element={<PlaceholderCollege role="faculty" />} />
         
         <Route path="/college/parent" element={<Navigate to="/college/parent/dashboard" replace />} />

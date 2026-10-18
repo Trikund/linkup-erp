@@ -2,7 +2,7 @@ import {
   LayoutDashboard, BookOpen, Clock, CheckSquare, FileText, 
   Award, TrendingUp, CreditCard, FileBadge, Briefcase, 
   Bell, User, Users, Building, Calendar, Settings, FileBox,
-  GraduationCap, BookMarked, HelpCircle, ShieldCheck
+  GraduationCap, BookMarked, HelpCircle, ShieldCheck, UserCheck
 } from 'lucide-react';
 
 export interface CollegeNavItem {
@@ -63,15 +63,54 @@ export const collegeStudentNavGroups: CollegeNavGroup[] = [
   }
 ];
 
+export const collegeFacultyNavGroups: CollegeNavGroup[] = [
+  {
+    groupName: 'Teaching & Academics',
+    items: [
+      { label: 'Faculty Dashboard', path: '/college/faculty/dashboard', icon: LayoutDashboard },
+      { label: 'Assigned Courses', path: '/college/faculty/courses', icon: BookOpen },
+      { label: 'Students & Batches', path: '/college/faculty/students', icon: Users, badge: '142', badgeColor: 'blue' },
+      { label: 'Attendance Register', path: '/college/faculty/attendance', icon: CheckSquare },
+      { label: 'Teaching Schedule', path: '/college/faculty/schedule', icon: Calendar }
+    ]
+  },
+  {
+    groupName: 'Evaluation & Exams',
+    items: [
+      { label: 'Assignments & Labs', path: '/college/faculty/assignments', icon: FileText, badge: '45 Due', badgeColor: 'amber' },
+      { label: 'Exam Duties & Papers', path: '/college/faculty/exams', icon: FileBadge },
+      { label: 'Grading & Results', path: '/college/faculty/results', icon: Award }
+    ]
+  },
+  {
+    groupName: 'Mentorship & Capstone',
+    items: [
+      { label: 'Mentee Counseling', path: '/college/faculty/mentees', icon: UserCheck, badge: '24 Mentees', badgeColor: 'violet' },
+      { label: 'Major Capstone Projects', path: '/college/faculty/projects', icon: GraduationCap }
+    ]
+  },
+  {
+    groupName: 'Department & Service',
+    items: [
+      { label: 'Department Cell (HOD)', path: '/college/faculty/department', icon: Building },
+      { label: 'Research & Publications', path: '/college/faculty/research', icon: BookMarked },
+      { label: 'Notice Circulars', path: '/college/faculty/announcements', icon: Bell, badge: '2 New', badgeColor: 'blue' },
+      { label: 'Leave & Substitution', path: '/college/faculty/leaves', icon: Clock }
+    ]
+  },
+  {
+    groupName: 'Account',
+    items: [
+      { label: 'Faculty Help Desk', path: '/college/faculty/help', icon: HelpCircle },
+      { label: 'Settings & Security', path: '/college/faculty/settings', icon: Settings },
+      { label: 'Faculty Profile & CV', path: '/college/faculty/profile', icon: User }
+    ]
+  }
+];
+
 export const collegeNavigation = {
   student: collegeStudentNavGroups.flatMap(g => g.items),
-  faculty: [
-    { label: 'Dashboard', path: '/college/faculty/dashboard', icon: LayoutDashboard },
-    { label: 'Subjects', path: '/college/faculty/subjects', icon: BookOpen },
-    { label: 'Students', path: '/college/faculty/students', icon: Users },
-    { label: 'Schedule', path: '/college/faculty/schedule', icon: Calendar },
-    { label: 'Profile', path: '/college/faculty/profile', icon: User }
-  ],
+  faculty: collegeFacultyNavGroups.flatMap(g => g.items),
   parent: [
     { label: 'Dashboard', path: '/college/parent/dashboard', icon: LayoutDashboard },
     { label: 'Attendance', path: '/college/parent/attendance', icon: CheckSquare },
