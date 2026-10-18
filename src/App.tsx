@@ -89,7 +89,21 @@ import { PlaceholderCorporate } from './pages/corporate/PlaceholderCorporate';
 // Phase 3 College Portals
 import { StudentDashboard as CollegeStudentDashboard } from './pages/college/student/StudentDashboard';
 import { StudentCourses as CollegeStudentCourses } from './pages/college/student/StudentCourses';
+import { StudentTimetable as CollegeStudentTimetable } from './pages/college/student/StudentTimetable';
+import { StudentAttendance as CollegeStudentAttendance } from './pages/college/student/StudentAttendance';
+import { StudentAssignments as CollegeStudentAssignments } from './pages/college/student/StudentAssignments';
+import { StudentExams as CollegeStudentExams } from './pages/college/student/StudentExams';
 import { StudentResults as CollegeStudentResults } from './pages/college/student/StudentResults';
+import { StudentPerformance as CollegeStudentPerformance } from './pages/college/student/StudentPerformance';
+import { StudentPlacements as CollegeStudentPlacements } from './pages/college/student/StudentPlacements';
+import { StudentInternships as CollegeStudentInternships } from './pages/college/student/StudentInternships';
+import { StudentFees as CollegeStudentFees } from './pages/college/student/StudentFees';
+import { StudentLibrary as CollegeStudentLibrary } from './pages/college/student/StudentLibrary';
+import { StudentHostel as CollegeStudentHostel } from './pages/college/student/StudentHostel';
+import { StudentNotifications as CollegeStudentNotifications } from './pages/college/student/StudentNotifications';
+import { StudentHelp as CollegeStudentHelp } from './pages/college/student/StudentHelp';
+import { StudentSettings as CollegeStudentSettings } from './pages/college/student/StudentSettings';
+import { StudentProfile as CollegeStudentProfile } from './pages/college/student/StudentProfile';
 import { FacultyDashboard as CollegeFacultyDashboard } from './pages/college/faculty/FacultyDashboard';
 import { ParentDashboard as CollegeParentDashboard } from './pages/college/parent/ParentDashboard';
 import { AdminDashboard as CollegeAdminDashboard } from './pages/college/admin/AdminDashboard';
@@ -189,11 +203,25 @@ function App() {
         
         
         
-        {/* Phase 3: College ERP Portals */}
+        {/* Phase 3: College ERP Portals - Student Portal */}
         <Route path="/college/student" element={<Navigate to="/college/student/dashboard" replace />} />
         <Route path="/college/student/dashboard" element={<CollegeStudentDashboard />} />
         <Route path="/college/student/courses" element={<CollegeStudentCourses />} />
+        <Route path="/college/student/timetable" element={<CollegeStudentTimetable />} />
+        <Route path="/college/student/attendance" element={<CollegeStudentAttendance />} />
+        <Route path="/college/student/assignments" element={<CollegeStudentAssignments />} />
+        <Route path="/college/student/exams" element={<CollegeStudentExams />} />
         <Route path="/college/student/results" element={<CollegeStudentResults />} />
+        <Route path="/college/student/performance" element={<CollegeStudentPerformance />} />
+        <Route path="/college/student/placements" element={<CollegeStudentPlacements />} />
+        <Route path="/college/student/internships" element={<CollegeStudentInternships />} />
+        <Route path="/college/student/fees" element={<CollegeStudentFees />} />
+        <Route path="/college/student/library" element={<CollegeStudentLibrary />} />
+        <Route path="/college/student/hostel" element={<CollegeStudentHostel />} />
+        <Route path="/college/student/notifications" element={<CollegeStudentNotifications />} />
+        <Route path="/college/student/help" element={<CollegeStudentHelp />} />
+        <Route path="/college/student/settings" element={<CollegeStudentSettings />} />
+        <Route path="/college/student/profile" element={<CollegeStudentProfile />} />
         <Route path="/college/student/*" element={<PlaceholderCollege role="student" />} />
         
         <Route path="/college/faculty" element={<Navigate to="/college/faculty/dashboard" replace />} />
