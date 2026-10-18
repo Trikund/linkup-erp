@@ -30,7 +30,7 @@ export function RoleSelector({ roles, selectedRole, onSelect, accent = 'blue' }:
   };
 
   return (
-    <div className="flex gap-2 mb-8 justify-between">
+    <div className="flex gap-1.5 xl:gap-2 mb-3.5 xl:mb-4 justify-between">
       {roles.map((role) => {
         const isSelected = selectedRole === role.id;
         
@@ -40,13 +40,13 @@ export function RoleSelector({ roles, selectedRole, onSelect, accent = 'blue' }:
             type="button"
             onClick={() => onSelect(role.id)}
             className={cn(
-              "flex-1 flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl text-xs font-semibold transition-all duration-200 border",
+              "flex-1 flex flex-col items-center justify-center gap-1 p-1.5 xl:p-2 rounded-xl text-[11px] xl:text-xs font-semibold transition-all duration-200 border",
               isSelected 
                 ? accentColors[accent] 
                 : cn("bg-white border-slate-200 text-slate-500 shadow-sm", textHoverColors[accent])
             )}
           >
-            <role.icon size={18} strokeWidth={isSelected ? 2.5 : 2} />
+            <role.icon size={17} strokeWidth={isSelected ? 2.5 : 2} />
             {role.label}
           </button>
         );

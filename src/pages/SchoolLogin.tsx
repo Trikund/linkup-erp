@@ -30,9 +30,9 @@ export function SchoolLogin() {
       visualSubheadline="Smart tools for students, teachers and parents."
       features={FEATURES}
     >
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
-        <p className="text-slate-500">Login to access your school portal</p>
+      <div className="mb-3.5 xl:mb-4">
+        <h1 className="text-2xl xl:text-3xl font-bold text-slate-900 mb-1">Welcome Back</h1>
+        <p className="text-xs xl:text-sm text-slate-500">Login to access your school portal</p>
       </div>
 
       <RoleSelector 
@@ -48,7 +48,7 @@ export function SchoolLogin() {
         accent="blue" 
       />
 
-      <p className="mt-8 text-center text-sm text-slate-500">
+      <p className="mt-3.5 xl:mt-4 text-center text-xs xl:text-sm text-slate-500">
         Don't have an account? <a href="#" className="font-medium text-linkup-blue hover:underline">Contact your school</a>
       </p>
     </AuthLayout>

@@ -32,40 +32,42 @@ export function AuthLayout({
   };
 
   return (
-    <div className="min-h-screen w-full relative flex selection:bg-linkup-blue/20">
+    <div className="min-h-[100dvh] lg:h-[100dvh] w-full relative flex flex-col lg:flex-row lg:overflow-hidden selection:bg-linkup-blue/20">
       
       {/* Full Screen Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-slate-100">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900 pointer-events-none">
         <img 
           src={image} 
           alt="Organization Campus" 
-          className="absolute inset-0 w-full h-full object-cover brightness-[1.1] contrast-[1.15] saturate-[1.2]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[1.08] contrast-[1.12] saturate-[1.15]"
         />
-        {/* Soft white gradient on the left so the glass panel stays bright and clean! */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/20 to-transparent w-[60%]" />
+        {/* Soft white gradient on the left so the glass panel stays bright and clean */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/30 to-transparent lg:w-[55%]" />
         
         {/* Subtle dark gradient overlay for text readability on the right */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/50 via-black/10 to-transparent w-[60%] right-0 ml-auto" />
+        <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-black/20 to-transparent lg:w-[60%] right-0 ml-auto" />
         <div className={cn("absolute inset-0 bg-gradient-to-t opacity-70", accentGradients[accent])} />
       </div>
 
       {/* Left Panel - Auth Form (Premium Floating Glass) */}
-      <div className="w-full lg:w-[45%] xl:w-[40%] flex flex-col relative z-10 lg:m-6 xl:m-8 lg:rounded-[2.5rem] bg-white/80 backdrop-blur-2xl border border-white shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-6 md:p-10 lg:p-12 overflow-y-auto">
+      <div className="w-full lg:w-[460px] xl:w-[500px] 2xl:w-[540px] flex-shrink-0 flex flex-col relative z-10 m-0 lg:my-auto lg:ml-6 xl:ml-10 2xl:ml-14 lg:max-h-[calc(100dvh-2.5rem)] xl:max-h-[calc(100dvh-3.5rem)] lg:rounded-[2rem] xl:rounded-[2.5rem] bg-white/85 backdrop-blur-2xl border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-5 sm:p-7 md:p-8 lg:p-6 xl:p-8 overflow-y-auto">
         
-        <div className="flex items-center justify-between mb-16">
+        {/* Card Header: Logo & Back Link */}
+        <div className="flex items-center justify-between mb-3.5 xl:mb-5 flex-shrink-0">
           <Logo />
           <Link 
             to="/" 
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors bg-white/80 hover:bg-white shadow-sm border border-slate-200 px-4 py-2 rounded-full backdrop-blur-sm"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors bg-white/90 hover:bg-white shadow-sm border border-slate-200/80 px-3.5 py-1.5 rounded-full backdrop-blur-sm"
           >
-            <ArrowLeft size={14} strokeWidth={2.5} />
+            <ArrowLeft size={13} strokeWidth={2.5} />
             Back to home
           </Link>
         </div>
 
-        <div className="flex-grow flex flex-col justify-center max-w-sm w-full mx-auto">
-          <div className="mb-4">
-            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-linkup-blue mb-2 block drop-shadow-sm">
+        {/* Form Body */}
+        <div className="flex-1 flex flex-col justify-center max-w-sm w-full mx-auto my-auto">
+          <div className="mb-1.5">
+            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-linkup-blue block drop-shadow-sm">
               {label}
             </span>
           </div>
@@ -74,52 +76,53 @@ export function AuthLayout({
       </div>
 
       {/* Right Panel - Visual Text & Features */}
-      <div className="hidden lg:flex lg:w-[55%] xl:w-[60%] relative z-10 flex-col justify-end p-12 lg:p-20">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-xl mb-10"
-        >
-          <h2 className="text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.05] drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
-            {visualHeadline.split(' ').map((word, i) => (
-              <React.Fragment key={i}>
-                {word}
-                {(i === 1 || i === 3) ? <br /> : ' '}
-              </React.Fragment>
-            ))}
-          </h2>
-          <p className="text-xl text-white/90 font-medium drop-shadow-md">
-            {visualSubheadline}
-          </p>
-        </motion.div>
+      <div className="hidden lg:flex flex-1 relative z-10 flex-col justify-center p-8 lg:p-10 xl:p-14 2xl:p-18 overflow-hidden">
+        <div className="max-w-xl my-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
+            className="mb-5 xl:mb-7"
+          >
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white mb-2.5 xl:mb-3.5 leading-[1.08] drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
+              {visualHeadline.split(' ').map((word, i) => (
+                <React.Fragment key={i}>
+                  {word}
+                  {(i === 1 || i === 3) ? <br /> : ' '}
+                </React.Fragment>
+              ))}
+            </h2>
+            <p className="text-sm xl:text-base 2xl:text-lg text-white/90 font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+              {visualSubheadline}
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {/* Restored Frosted Glass Pills with Enhanced Text Visibility */}
-          <div className="flex flex-col gap-4 max-w-sm mt-4">
-            {features.map((feature, idx) => (
-              <div 
-                key={idx} 
-                className="group flex items-center gap-5 p-3 pr-6 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/50 transition-all duration-300 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.1)]"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white shadow-inner group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon size={20} strokeWidth={2.5} className="drop-shadow-md" />
-                </div>
-                <span 
-                  className="text-[16px] font-bold text-white tracking-wide group-hover:text-white transition-colors"
-                  style={{ textShadow: '0px 2px 8px rgba(0,0,0,0.8), 0px 1px 3px rgba(0,0,0,0.6)' }}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.4 }}
+          >
+            {/* Frosted Glass Pills with Responsive Fit */}
+            <div className="flex flex-col gap-2.5 xl:gap-3 max-w-md">
+              {features.map((feature, idx) => (
+                <div 
+                  key={idx} 
+                  className="group flex items-center gap-3.5 xl:gap-4 p-2 xl:p-2.5 pr-5 xl:pr-6 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 hover:border-white/50 transition-all duration-300 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.12)]"
                 >
-                  {feature.text}
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+                  <div className="flex items-center justify-center w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-white/25 text-white shadow-inner group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+                    <feature.icon size={17} strokeWidth={2.5} className="drop-shadow-md" />
+                  </div>
+                  <span 
+                    className="text-xs sm:text-sm xl:text-[15px] font-bold text-white tracking-wide group-hover:text-white transition-colors"
+                    style={{ textShadow: '0px 2px 8px rgba(0,0,0,0.8), 0px 1px 3px rgba(0,0,0,0.6)' }}
+                  >
+                    {feature.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
       
     </div>
