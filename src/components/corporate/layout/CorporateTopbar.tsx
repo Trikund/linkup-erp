@@ -61,15 +61,21 @@ export function CorporateTopbar({ role, user, onOpenSidebar, title, description,
           </div>
           
           <button 
-            onClick={() => navigate('/corporate/employee/help')}
+            onClick={() => {
+              const helpPath = role === 'admin' ? '/corporate/admin/settings' : role === 'manager' ? '/corporate/manager/help' : role === 'hr' ? '/corporate/hr/helpdesk' : '/corporate/employee/help';
+              navigate(helpPath);
+            }}
             className="hidden sm:block relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors"
-            title="Helpdesk & Support"
+            title="Help & Settings"
           >
             <HelpCircle size={18} />
           </button>
           
           <button 
-            onClick={() => navigate('/corporate/employee/dashboard')}
+            onClick={() => {
+              const dashPath = role === 'admin' ? '/corporate/admin/dashboard' : role === 'manager' ? '/corporate/manager/dashboard' : role === 'hr' ? '/corporate/hr/dashboard' : '/corporate/employee/dashboard';
+              navigate(dashPath);
+            }}
             className="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors"
             title="Notifications"
           >
@@ -80,11 +86,14 @@ export function CorporateTopbar({ role, user, onOpenSidebar, title, description,
           <div className="h-8 w-px bg-slate-200 mx-1"></div>
 
           <div 
-            onClick={() => navigate('/corporate/employee/profile')}
+            onClick={() => {
+              const profilePath = role === 'admin' ? '/corporate/admin/profile' : role === 'manager' ? '/corporate/manager/profile' : role === 'hr' ? '/corporate/hr/profile' : '/corporate/employee/profile';
+              navigate(profilePath);
+            }}
             className="flex items-center gap-2.5 p-1 pr-3 rounded-full hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all cursor-pointer"
           >
             <div className="w-8 h-8 rounded-full bg-slate-800 text-white font-bold text-xs flex items-center justify-center shadow-sm border border-slate-200">
-              RS
+              {user.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
             </div>
             <div className="hidden sm:block text-left">
               <p className="text-xs font-bold text-slate-800 leading-none">{user.name}</p>

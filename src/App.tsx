@@ -136,6 +136,23 @@ import { HrDocuments } from './pages/corporate/hr/HrDocuments';
 import { HrHelpdesk } from './pages/corporate/hr/HrHelpdesk';
 import { HrProfile } from './pages/corporate/hr/HrProfile';
 import { AdminDashboard as CorporateAdminDashboard } from './pages/corporate/admin/AdminDashboard';
+import { AdminEmployees as CorporateAdminEmployees } from './pages/corporate/admin/AdminEmployees';
+import { AdminDepartments as CorporateAdminDepartments } from './pages/corporate/admin/AdminDepartments';
+import { AdminRoles as CorporateAdminRoles } from './pages/corporate/admin/AdminRoles';
+import { AdminSso as CorporateAdminSso } from './pages/corporate/admin/AdminSso';
+import { AdminSecurity as CorporateAdminSecurity } from './pages/corporate/admin/AdminSecurity';
+import { AdminAttendance as CorporateAdminAttendance } from './pages/corporate/admin/AdminAttendance';
+import { AdminPayroll as CorporateAdminPayroll } from './pages/corporate/admin/AdminPayroll';
+import { AdminProjects as CorporateAdminProjects } from './pages/corporate/admin/AdminProjects';
+import { AdminInfrastructure as CorporateAdminInfrastructure } from './pages/corporate/admin/AdminInfrastructure';
+import { AdminBackups as CorporateAdminBackups } from './pages/corporate/admin/AdminBackups';
+import { AdminIntegrations as CorporateAdminIntegrations } from './pages/corporate/admin/AdminIntegrations';
+import { AdminReports as CorporateAdminReports } from './pages/corporate/admin/AdminReports';
+import { AdminAuditLogs as CorporateAdminAuditLogs } from './pages/corporate/admin/AdminAuditLogs';
+import { AdminCompliance as CorporateAdminCompliance } from './pages/corporate/admin/AdminCompliance';
+import { AdminSettings as CorporateAdminSettings } from './pages/corporate/admin/AdminSettings';
+import { AdminBilling as CorporateAdminBilling } from './pages/corporate/admin/AdminBilling';
+import { AdminProfile as CorporateAdminProfile } from './pages/corporate/admin/AdminProfile';
 import { PlaceholderCorporate } from './pages/corporate/PlaceholderCorporate';
 
 
@@ -458,6 +475,23 @@ function App() {
         
         <Route path="/corporate/admin" element={<Navigate to="/corporate/admin/dashboard" replace />} />
         <Route path="/corporate/admin/dashboard" element={<CorporateAdminDashboard />} />
+        <Route path="/corporate/admin/employees" element={<CorporateAdminEmployees />} />
+        <Route path="/corporate/admin/departments" element={<CorporateAdminDepartments />} />
+        <Route path="/corporate/admin/roles" element={<CorporateAdminRoles />} />
+        <Route path="/corporate/admin/sso" element={<CorporateAdminSso />} />
+        <Route path="/corporate/admin/security" element={<CorporateAdminSecurity />} />
+        <Route path="/corporate/admin/attendance" element={<CorporateAdminAttendance />} />
+        <Route path="/corporate/admin/payroll" element={<CorporateAdminPayroll />} />
+        <Route path="/corporate/admin/projects" element={<CorporateAdminProjects />} />
+        <Route path="/corporate/admin/infrastructure" element={<CorporateAdminInfrastructure />} />
+        <Route path="/corporate/admin/backups" element={<CorporateAdminBackups />} />
+        <Route path="/corporate/admin/integrations" element={<CorporateAdminIntegrations />} />
+        <Route path="/corporate/admin/reports" element={<CorporateAdminReports />} />
+        <Route path="/corporate/admin/audit-logs" element={<CorporateAdminAuditLogs />} />
+        <Route path="/corporate/admin/compliance" element={<CorporateAdminCompliance />} />
+        <Route path="/corporate/admin/settings" element={<CorporateAdminSettings />} />
+        <Route path="/corporate/admin/billing" element={<CorporateAdminBilling />} />
+        <Route path="/corporate/admin/profile" element={<CorporateAdminProfile />} />
         <Route path="/corporate/admin/*" element={<PlaceholderCorporate role="admin" />} />
 
         {/* Dashboard Placeholders (Catch-all) */}

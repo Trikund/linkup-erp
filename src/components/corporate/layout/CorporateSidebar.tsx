@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { BriefcaseBusiness, LogOut, X } from 'lucide-react';
 import { cn } from '../../../lib/utils';
-import { corporateNavigation, corporateEmployeeNavGroups, corporateManagerNavGroups, corporateHrNavGroups, CorporateNavGroup } from '../../../config/corporate/navigation';
+import { corporateNavigation, corporateEmployeeNavGroups, corporateManagerNavGroups, corporateHrNavGroups, corporateAdminNavGroups, CorporateNavGroup } from '../../../config/corporate/navigation';
 import { CorporateRole } from '../../../types/corporate';
 
 interface CorporateSidebarProps {
@@ -15,13 +15,15 @@ export function CorporateSidebar({ role, isOpen, onClose }: CorporateSidebarProp
   const navigate = useNavigate();
   const location = useLocation();
 
-  // If role is employee, manager, or hr, use the detailed grouped sections
+  // If role is employee, manager, hr, or admin, use the detailed grouped sections
   const groups: CorporateNavGroup[] = role === 'employee'
     ? corporateEmployeeNavGroups
     : role === 'manager'
     ? corporateManagerNavGroups
     : role === 'hr'
     ? corporateHrNavGroups
+    : role === 'admin'
+    ? corporateAdminNavGroups
     : [
         {
           groupName: 'Organization Menu',
@@ -83,7 +85,7 @@ export function CorporateSidebar({ role, isOpen, onClose }: CorporateSidebarProp
               </div>
               <div className="space-y-0.5">
                 {group.items.map((item) => {
-                  const isDashboard = item.path === '/corporate/employee/dashboard' || item.path === '/corporate/manager/dashboard' || item.path === '/corporate/hr/dashboard';
+                  const isDashboard = item.path === '/corporate/employee/dashboard' || item.path === '/corporate/manager/dashboard' || item.path === '/corporate/hr/dashboard' || item.path === '/corporate/admin/dashboard';
                   const isActive = location.pathname === item.path || (!isDashboard && location.pathname.startsWith(`${item.path}/`));
 
                   return (
@@ -134,7 +136,7 @@ export function CorporateSidebar({ role, isOpen, onClose }: CorporateSidebarProp
               <span className="text-[11px] text-slate-400 font-medium">LinkUp Enterprise v4.8</span>
             </div>
             <span className="text-[10px] font-mono text-slate-500">
-              {role === 'manager' ? 'MGR-0102' : role === 'hr' ? 'HR-0104' : 'EMP-0428'}
+              {role === 'admin' ? 'ADM-0001' : role === 'manager' ? 'MGR-0102' : role === 'hr' ? 'HR-0104' : 'EMP-0428'}
             </span>
           </div>
           <button 

@@ -4,7 +4,8 @@ import {
   Bell, User, Settings, Megaphone, FileBox, ShieldCheck, HeartHandshake,
   Receipt, Landmark, PieChart, BookOpen, Sparkles, Laptop, Building2,
   CalendarDays, HelpCircle, Layers, FolderKanban, Award,
-  Target, BarChart3, MessageSquare, UserPlus, UserCheck, FileSpreadsheet
+  Target, BarChart3, MessageSquare, UserPlus, UserCheck, FileSpreadsheet,
+  Server, Database, Key, Lock, Cpu
 } from 'lucide-react';
 
 export interface CorporateNavItem {
@@ -172,18 +173,60 @@ export const corporateHrNavGroups: CorporateNavGroup[] = [
   }
 ];
 
+export const corporateAdminNavGroups: CorporateNavGroup[] = [
+  {
+    groupName: 'Platform Overview & Organization',
+    items: [
+      { label: 'Admin Dashboard', path: '/corporate/admin/dashboard', icon: LayoutDashboard },
+      { label: 'Workforce Master', path: '/corporate/admin/employees', icon: Users, badge: '1,450 Staff', badgeColor: 'blue' },
+      { label: 'Departments & Entities', path: '/corporate/admin/departments', icon: Building2, badge: '8 Units', badgeColor: 'violet' }
+    ]
+  },
+  {
+    groupName: 'Identity, Access & Security',
+    items: [
+      { label: 'Roles & RBAC Access', path: '/corporate/admin/roles', icon: Key, badge: '6 Roles', badgeColor: 'amber' },
+      { label: 'Single Sign-On (SSO)', path: '/corporate/admin/sso', icon: ShieldCheck, badge: 'SAML 2.0', badgeColor: 'green' },
+      { label: 'Security & Zero-Trust', path: '/corporate/admin/security', icon: Lock, badge: 'Enforced', badgeColor: 'green' }
+    ]
+  },
+  {
+    groupName: 'Operations & Payroll Governance',
+    items: [
+      { label: 'Attendance Telemetry', path: '/corporate/admin/attendance', icon: Clock, badge: '96.8%', badgeColor: 'green' },
+      { label: 'Enterprise Payroll', path: '/corporate/admin/payroll', icon: CreditCard, badge: '₹18.4 Cr', badgeColor: 'amber' },
+      { label: 'Project Portfolio', path: '/corporate/admin/projects', icon: FolderKanban, badge: '42 Active', badgeColor: 'blue' }
+    ]
+  },
+  {
+    groupName: 'Cloud Infrastructure & Data',
+    items: [
+      { label: 'Cloud Infrastructure', path: '/corporate/admin/infrastructure', icon: Server, badge: '99.98%', badgeColor: 'green' },
+      { label: 'Database & Backups', path: '/corporate/admin/backups', icon: Database, badge: 'Hourly', badgeColor: 'blue' },
+      { label: 'API & Integrations', path: '/corporate/admin/integrations', icon: Cpu, badge: '12 Active', badgeColor: 'violet' }
+    ]
+  },
+  {
+    groupName: 'Analytics, Audit & Compliance',
+    items: [
+      { label: 'Executive BI Reports', path: '/corporate/admin/reports', icon: BarChart3 },
+      { label: 'Global Audit Logs', path: '/corporate/admin/audit-logs', icon: FileText, badge: 'Live Stream', badgeColor: 'blue' },
+      { label: 'Compliance & Legal Vault', path: '/corporate/admin/compliance', icon: FileBox }
+    ]
+  },
+  {
+    groupName: 'System Configuration & Account',
+    items: [
+      { label: 'Platform Settings', path: '/corporate/admin/settings', icon: Settings },
+      { label: 'Licenses & Billing', path: '/corporate/admin/billing', icon: Receipt, badge: 'Enterprise', badgeColor: 'blue' },
+      { label: 'Super Admin Profile', path: '/corporate/admin/profile', icon: UserCheck }
+    ]
+  }
+];
+
 export const corporateNavigation = {
   employee: corporateEmployeeNavGroups.flatMap(g => g.items),
   manager: corporateManagerNavGroups.flatMap(g => g.items),
   hr: corporateHrNavGroups.flatMap(g => g.items),
-  admin: [
-    { label: 'Dashboard', path: '/corporate/admin/dashboard', icon: LayoutDashboard },
-    { label: 'Employees', path: '/corporate/admin/employees', icon: Users },
-    { label: 'Departments', path: '/corporate/admin/departments', icon: Briefcase },
-    { label: 'Attendance', path: '/corporate/admin/attendance', icon: Clock },
-    { label: 'Payroll', path: '/corporate/admin/payroll', icon: CreditCard },
-    { label: 'Reports', path: '/corporate/admin/reports', icon: FileBox },
-    { label: 'Audit Logs', path: '/corporate/admin/audit-logs', icon: FileText },
-    { label: 'Settings', path: '/corporate/admin/settings', icon: Settings }
-  ]
+  admin: corporateAdminNavGroups.flatMap(g => g.items)
 };
