@@ -116,6 +116,25 @@ import { ManagerCompliance } from './pages/corporate/manager/ManagerCompliance';
 import { ManagerHelp } from './pages/corporate/manager/ManagerHelp';
 import { ManagerProfile } from './pages/corporate/manager/ManagerProfile';
 import { HrDashboard } from './pages/corporate/hr/HrDashboard';
+import { HrEmployees } from './pages/corporate/hr/HrEmployees';
+import { HrDepartments } from './pages/corporate/hr/HrDepartments';
+import { HrRecruitment } from './pages/corporate/hr/HrRecruitment';
+import { HrOnboarding } from './pages/corporate/hr/HrOnboarding';
+import { HrOffboarding } from './pages/corporate/hr/HrOffboarding';
+import { HrAttendance } from './pages/corporate/hr/HrAttendance';
+import { HrLeave } from './pages/corporate/hr/HrLeave';
+import { HrWfh } from './pages/corporate/hr/HrWfh';
+import { HrPayroll } from './pages/corporate/hr/HrPayroll';
+import { HrCompensation } from './pages/corporate/hr/HrCompensation';
+import { HrBenefits } from './pages/corporate/hr/HrBenefits';
+import { HrReimbursements } from './pages/corporate/hr/HrReimbursements';
+import { HrPerformance } from './pages/corporate/hr/HrPerformance';
+import { HrLearning } from './pages/corporate/hr/HrLearning';
+import { HrSurveys } from './pages/corporate/hr/HrSurveys';
+import { HrPolicies } from './pages/corporate/hr/HrPolicies';
+import { HrDocuments } from './pages/corporate/hr/HrDocuments';
+import { HrHelpdesk } from './pages/corporate/hr/HrHelpdesk';
+import { HrProfile } from './pages/corporate/hr/HrProfile';
 import { AdminDashboard as CorporateAdminDashboard } from './pages/corporate/admin/AdminDashboard';
 import { PlaceholderCorporate } from './pages/corporate/PlaceholderCorporate';
 
@@ -416,6 +435,25 @@ function App() {
         
         <Route path="/corporate/hr" element={<Navigate to="/corporate/hr/dashboard" replace />} />
         <Route path="/corporate/hr/dashboard" element={<HrDashboard />} />
+        <Route path="/corporate/hr/employees" element={<HrEmployees />} />
+        <Route path="/corporate/hr/departments" element={<HrDepartments />} />
+        <Route path="/corporate/hr/recruitment" element={<HrRecruitment />} />
+        <Route path="/corporate/hr/onboarding" element={<HrOnboarding />} />
+        <Route path="/corporate/hr/offboarding" element={<HrOffboarding />} />
+        <Route path="/corporate/hr/attendance" element={<HrAttendance />} />
+        <Route path="/corporate/hr/leave" element={<HrLeave />} />
+        <Route path="/corporate/hr/wfh" element={<HrWfh />} />
+        <Route path="/corporate/hr/payroll" element={<HrPayroll />} />
+        <Route path="/corporate/hr/compensation" element={<HrCompensation />} />
+        <Route path="/corporate/hr/benefits" element={<HrBenefits />} />
+        <Route path="/corporate/hr/reimbursements" element={<HrReimbursements />} />
+        <Route path="/corporate/hr/performance" element={<HrPerformance />} />
+        <Route path="/corporate/hr/learning" element={<HrLearning />} />
+        <Route path="/corporate/hr/surveys" element={<HrSurveys />} />
+        <Route path="/corporate/hr/policies" element={<HrPolicies />} />
+        <Route path="/corporate/hr/documents" element={<HrDocuments />} />
+        <Route path="/corporate/hr/helpdesk" element={<HrHelpdesk />} />
+        <Route path="/corporate/hr/profile" element={<HrProfile />} />
         <Route path="/corporate/hr/*" element={<PlaceholderCorporate role="hr" />} />
         
         <Route path="/corporate/admin" element={<Navigate to="/corporate/admin/dashboard" replace />} />

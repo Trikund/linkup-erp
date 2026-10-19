@@ -119,22 +119,63 @@ export const corporateManagerNavGroups: CorporateNavGroup[] = [
   }
 ];
 
+export const corporateHrNavGroups: CorporateNavGroup[] = [
+  {
+    groupName: 'Core Workforce & Directory',
+    items: [
+      { label: 'HR Dashboard', path: '/corporate/hr/dashboard', icon: LayoutDashboard },
+      { label: 'Employee Directory', path: '/corporate/hr/employees', icon: Users, badge: '149 Staff', badgeColor: 'blue' },
+      { label: 'Departments & Org', path: '/corporate/hr/departments', icon: Building2, badge: '8 Depts', badgeColor: 'violet' }
+    ]
+  },
+  {
+    groupName: 'Talent Acquisition & Onboarding',
+    items: [
+      { label: 'Recruitment & ATS', path: '/corporate/hr/recruitment', icon: Briefcase, badge: '8 Open', badgeColor: 'green' },
+      { label: 'New Hire Onboarding', path: '/corporate/hr/onboarding', icon: HeartHandshake, badge: '3 Joiners', badgeColor: 'blue' },
+      { label: 'Offboarding & Clearance', path: '/corporate/hr/offboarding', icon: UserCheck }
+    ]
+  },
+  {
+    groupName: 'Time, Attendance & Leaves',
+    items: [
+      { label: 'Attendance & Biometrics', path: '/corporate/hr/attendance', icon: Clock, badge: '97.2%', badgeColor: 'green' },
+      { label: 'Leave & Absences', path: '/corporate/hr/leave', icon: Calendar, badge: '12 Due', badgeColor: 'amber' },
+      { label: 'WFH & Hybrid Work', path: '/corporate/hr/wfh', icon: Laptop, badge: '3d Office', badgeColor: 'blue' }
+    ]
+  },
+  {
+    groupName: 'Compensation & Payroll',
+    items: [
+      { label: 'Payroll Processing', path: '/corporate/hr/payroll', icon: CreditCard, badge: '₹1.84 Cr', badgeColor: 'green' },
+      { label: 'Salary Bands & Equity', path: '/corporate/hr/compensation', icon: PieChart },
+      { label: 'Benefits & Insurance', path: '/corporate/hr/benefits', icon: Award, badge: '₹10L Cover', badgeColor: 'violet' },
+      { label: 'Reimbursements Audit', path: '/corporate/hr/reimbursements', icon: Receipt, badge: '5 Pending', badgeColor: 'amber' }
+    ]
+  },
+  {
+    groupName: 'Performance & Culture',
+    items: [
+      { label: 'Performance Appraisals', path: '/corporate/hr/performance', icon: TrendingUp, badge: '9-Box', badgeColor: 'violet' },
+      { label: 'Learning & Development', path: '/corporate/hr/learning', icon: BookOpen, badge: 'LMS 94%', badgeColor: 'blue' },
+      { label: 'Surveys & eNPS Pulse', path: '/corporate/hr/surveys', icon: Sparkles, badge: '+48 eNPS', badgeColor: 'green' }
+    ]
+  },
+  {
+    groupName: 'Compliance & Governance',
+    items: [
+      { label: 'Policies & Handbook', path: '/corporate/hr/policies', icon: ShieldCheck, badge: 'v4.8', badgeColor: 'blue' },
+      { label: 'Employee Documents', path: '/corporate/hr/documents', icon: FileText },
+      { label: 'HR Helpdesk & Grievance', path: '/corporate/hr/helpdesk', icon: HelpCircle, badge: '4 Tickets', badgeColor: 'amber' },
+      { label: 'HRBP Profile & Settings', path: '/corporate/hr/profile', icon: User }
+    ]
+  }
+];
+
 export const corporateNavigation = {
   employee: corporateEmployeeNavGroups.flatMap(g => g.items),
   manager: corporateManagerNavGroups.flatMap(g => g.items),
-  hr: [
-    { label: 'Dashboard', path: '/corporate/hr/dashboard', icon: LayoutDashboard },
-    { label: 'Employees', path: '/corporate/hr/employees', icon: Users },
-    { label: 'Recruitment', path: '/corporate/hr/recruitment', icon: Briefcase },
-    { label: 'Onboarding', path: '/corporate/hr/onboarding', icon: HeartHandshake },
-    { label: 'Attendance', path: '/corporate/hr/attendance', icon: Clock },
-    { label: 'Leave', path: '/corporate/hr/leave', icon: Calendar },
-    { label: 'Payroll', path: '/corporate/hr/payroll', icon: CreditCard },
-    { label: 'Performance', path: '/corporate/hr/performance', icon: TrendingUp },
-    { label: 'Policies', path: '/corporate/hr/policies', icon: ShieldCheck },
-    { label: 'Documents', path: '/corporate/hr/documents', icon: FileText },
-    { label: 'Profile', path: '/corporate/hr/profile', icon: User }
-  ],
+  hr: corporateHrNavGroups.flatMap(g => g.items),
   admin: [
     { label: 'Dashboard', path: '/corporate/admin/dashboard', icon: LayoutDashboard },
     { label: 'Employees', path: '/corporate/admin/employees', icon: Users },
