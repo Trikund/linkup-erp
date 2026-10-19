@@ -12,14 +12,15 @@ interface CorporateLayoutProps {
   };
   title?: string;
   description?: string;
+  breadcrumbs?: { label: string; path?: string }[];
   children: React.ReactNode;
 }
 
-export function CorporateLayout({ role, user, title, description, children }: CorporateLayoutProps) {
+export function CorporateLayout({ role, user, title, description, breadcrumbs, children }: CorporateLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] flex selection:bg-linkup-blue/20">
+    <div className="min-h-screen bg-[#f8fafc] flex selection:bg-blue-500/20 font-sans">
       <CorporateSidebar 
         role={role} 
         isOpen={sidebarOpen} 
@@ -33,11 +34,12 @@ export function CorporateLayout({ role, user, title, description, children }: Co
           onOpenSidebar={() => setSidebarOpen(true)}
           title={title}
           description={description}
+          breadcrumbs={breadcrumbs}
         />
         
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-x-hidden relative">
           {/* Subtle Aurora Effect specific to Corporate (Deep Navy/Blue) */}
-          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-linkup-navy/5 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-blue-900/5 to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto relative z-10">
             {children}
           </div>

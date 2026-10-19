@@ -78,8 +78,25 @@ import { PlaceholderDashboard } from './pages/PlaceholderDashboard';
 
 // Phase 4 Corporate Portals
 import { EmployeeDashboard } from './pages/corporate/employee/EmployeeDashboard';
+import { EmployeeTasks } from './pages/corporate/employee/EmployeeTasks';
+import { EmployeeProjects } from './pages/corporate/employee/EmployeeProjects';
+import { EmployeeTimesheets } from './pages/corporate/employee/EmployeeTimesheets';
 import { EmployeeAttendance } from './pages/corporate/employee/EmployeeAttendance';
 import { EmployeeLeave } from './pages/corporate/employee/EmployeeLeave';
+import { EmployeeWfh } from './pages/corporate/employee/EmployeeWfh';
+import { EmployeePayslips } from './pages/corporate/employee/EmployeePayslips';
+import { EmployeeTax } from './pages/corporate/employee/EmployeeTax';
+import { EmployeeReimbursements } from './pages/corporate/employee/EmployeeReimbursements';
+import { EmployeeBenefits } from './pages/corporate/employee/EmployeeBenefits';
+import { EmployeeOkrs } from './pages/corporate/employee/EmployeeOkrs';
+import { EmployeePerformance } from './pages/corporate/employee/EmployeePerformance';
+import { EmployeeLearning } from './pages/corporate/employee/EmployeeLearning';
+import { EmployeeTeam } from './pages/corporate/employee/EmployeeTeam';
+import { EmployeeDirectory } from './pages/corporate/employee/EmployeeDirectory';
+import { EmployeePolicies } from './pages/corporate/employee/EmployeePolicies';
+import { EmployeeAssets } from './pages/corporate/employee/EmployeeAssets';
+import { EmployeeHelp } from './pages/corporate/employee/EmployeeHelp';
+import { EmployeeProfile } from './pages/corporate/employee/EmployeeProfile';
 import { ManagerDashboard } from './pages/corporate/manager/ManagerDashboard';
 import { HrDashboard } from './pages/corporate/hr/HrDashboard';
 import { AdminDashboard as CorporateAdminDashboard } from './pages/corporate/admin/AdminDashboard';
@@ -338,8 +355,25 @@ function App() {
         {/* Phase 4: Corporate ERP Portals */}
         <Route path="/corporate/employee" element={<Navigate to="/corporate/employee/dashboard" replace />} />
         <Route path="/corporate/employee/dashboard" element={<EmployeeDashboard />} />
+        <Route path="/corporate/employee/tasks" element={<EmployeeTasks />} />
+        <Route path="/corporate/employee/projects" element={<EmployeeProjects />} />
+        <Route path="/corporate/employee/timesheets" element={<EmployeeTimesheets />} />
         <Route path="/corporate/employee/attendance" element={<EmployeeAttendance />} />
         <Route path="/corporate/employee/leave" element={<EmployeeLeave />} />
+        <Route path="/corporate/employee/wfh" element={<EmployeeWfh />} />
+        <Route path="/corporate/employee/payslips" element={<EmployeePayslips />} />
+        <Route path="/corporate/employee/tax" element={<EmployeeTax />} />
+        <Route path="/corporate/employee/reimbursements" element={<EmployeeReimbursements />} />
+        <Route path="/corporate/employee/benefits" element={<EmployeeBenefits />} />
+        <Route path="/corporate/employee/okrs" element={<EmployeeOkrs />} />
+        <Route path="/corporate/employee/performance" element={<EmployeePerformance />} />
+        <Route path="/corporate/employee/learning" element={<EmployeeLearning />} />
+        <Route path="/corporate/employee/team" element={<EmployeeTeam />} />
+        <Route path="/corporate/employee/directory" element={<EmployeeDirectory />} />
+        <Route path="/corporate/employee/policies" element={<EmployeePolicies />} />
+        <Route path="/corporate/employee/assets" element={<EmployeeAssets />} />
+        <Route path="/corporate/employee/help" element={<EmployeeHelp />} />
+        <Route path="/corporate/employee/profile" element={<EmployeeProfile />} />
         <Route path="/corporate/employee/*" element={<PlaceholderCorporate role="employee" />} />
         
         <Route path="/corporate/manager" element={<Navigate to="/corporate/manager/dashboard" replace />} />
