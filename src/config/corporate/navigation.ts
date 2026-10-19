@@ -3,7 +3,8 @@ import {
   Briefcase, TrendingUp, CreditCard, FileText, 
   Bell, User, Settings, Megaphone, FileBox, ShieldCheck, HeartHandshake,
   Receipt, Landmark, PieChart, BookOpen, Sparkles, Laptop, Building2,
-  CalendarDays, HelpCircle, Layers, FolderKanban, Award
+  CalendarDays, HelpCircle, Layers, FolderKanban, Award,
+  Target, BarChart3, MessageSquare, UserPlus, UserCheck, FileSpreadsheet
 } from 'lucide-react';
 
 export interface CorporateNavItem {
@@ -72,19 +73,55 @@ export const corporateEmployeeNavGroups: CorporateNavGroup[] = [
   }
 ];
 
+export const corporateManagerNavGroups: CorporateNavGroup[] = [
+  {
+    groupName: 'Team & Operations',
+    items: [
+      { label: 'Manager Dashboard', path: '/corporate/manager/dashboard', icon: LayoutDashboard },
+      { label: 'Direct Reports & Pod', path: '/corporate/manager/team', icon: Users, badge: '8 Eng', badgeColor: 'blue' },
+      { label: 'Attendance & Swipes', path: '/corporate/manager/attendance', icon: Clock, badge: '96%', badgeColor: 'green' },
+      { label: 'Leave Approvals', path: '/corporate/manager/leave', icon: Calendar, badge: '2 Due', badgeColor: 'amber' }
+    ]
+  },
+  {
+    groupName: 'Projects & Delivery',
+    items: [
+      { label: 'Sprint Planning & Tasks', path: '/corporate/manager/tasks', icon: CheckSquare, badge: 'Sprint 42', badgeColor: 'blue' },
+      { label: 'Project Roadmaps', path: '/corporate/manager/projects', icon: FolderKanban, badge: '4 Repos', badgeColor: 'blue' },
+      { label: 'Timesheet Signoffs', path: '/corporate/manager/timesheets', icon: FileSpreadsheet, badge: '5 Pending', badgeColor: 'amber' }
+    ]
+  },
+  {
+    groupName: 'Financials & Approvals',
+    items: [
+      { label: 'Expense Claims', path: '/corporate/manager/expenses', icon: Receipt, badge: '3 Claims', badgeColor: 'amber' },
+      { label: 'Team Budgets & Cloud', path: '/corporate/manager/budgets', icon: CreditCard, badge: '₹45L', badgeColor: 'green' },
+      { label: 'Salary & Compensation', path: '/corporate/manager/compensation', icon: PieChart }
+    ]
+  },
+  {
+    groupName: 'Performance & Talent',
+    items: [
+      { label: 'Team OKRs & Goals', path: '/corporate/manager/okrs', icon: Target, badge: '84%', badgeColor: 'blue' },
+      { label: 'Reviews & Calibration', path: '/corporate/manager/performance', icon: TrendingUp, badge: '9-Box', badgeColor: 'violet' },
+      { label: '1-on-1s & Mentorship', path: '/corporate/manager/one-on-one', icon: MessageSquare, badge: 'Today', badgeColor: 'violet' },
+      { label: 'Hiring & Interviews', path: '/corporate/manager/hiring', icon: UserPlus, badge: '2 Open', badgeColor: 'green' }
+    ]
+  },
+  {
+    groupName: 'Analytics & Governance',
+    items: [
+      { label: 'Engineering Metrics & DORA', path: '/corporate/manager/reports', icon: BarChart3 },
+      { label: 'Security & Compliance', path: '/corporate/manager/compliance', icon: ShieldCheck },
+      { label: 'Manager Helpdesk', path: '/corporate/manager/help', icon: HelpCircle },
+      { label: 'Manager Profile & Delegation', path: '/corporate/manager/profile', icon: UserCheck }
+    ]
+  }
+];
+
 export const corporateNavigation = {
   employee: corporateEmployeeNavGroups.flatMap(g => g.items),
-  manager: [
-    { label: 'Dashboard', path: '/corporate/manager/dashboard', icon: LayoutDashboard },
-    { label: 'My Team', path: '/corporate/manager/team', icon: Users },
-    { label: 'Attendance', path: '/corporate/manager/attendance', icon: Clock },
-    { label: 'Leave Approval', path: '/corporate/manager/leave', icon: Calendar },
-    { label: 'Tasks', path: '/corporate/manager/tasks', icon: CheckSquare },
-    { label: 'Projects', path: '/corporate/manager/projects', icon: Briefcase },
-    { label: 'Performance', path: '/corporate/manager/performance', icon: TrendingUp },
-    { label: 'Reports', path: '/corporate/manager/reports', icon: FileBox },
-    { label: 'Profile', path: '/corporate/manager/profile', icon: User }
-  ],
+  manager: corporateManagerNavGroups.flatMap(g => g.items),
   hr: [
     { label: 'Dashboard', path: '/corporate/hr/dashboard', icon: LayoutDashboard },
     { label: 'Employees', path: '/corporate/hr/employees', icon: Users },

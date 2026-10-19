@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { BriefcaseBusiness, LogOut, X } from 'lucide-react';
 import { cn } from '../../../lib/utils';
-import { corporateNavigation, corporateEmployeeNavGroups, CorporateNavGroup } from '../../../config/corporate/navigation';
+import { corporateNavigation, corporateEmployeeNavGroups, corporateManagerNavGroups, CorporateNavGroup } from '../../../config/corporate/navigation';
 import { CorporateRole } from '../../../types/corporate';
 
 interface CorporateSidebarProps {
@@ -15,9 +15,11 @@ export function CorporateSidebar({ role, isOpen, onClose }: CorporateSidebarProp
   const navigate = useNavigate();
   const location = useLocation();
 
-  // If role is employee, use the detailed grouped sections
+  // If role is employee or manager, use the detailed grouped sections
   const groups: CorporateNavGroup[] = role === 'employee'
     ? corporateEmployeeNavGroups
+    : role === 'manager'
+    ? corporateManagerNavGroups
     : [
         {
           groupName: 'Organization Menu',
@@ -129,7 +131,9 @@ export function CorporateSidebar({ role, isOpen, onClose }: CorporateSidebarProp
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[11px] text-slate-400 font-medium">LinkUp Enterprise v4.8</span>
             </div>
-            <span className="text-[10px] font-mono text-slate-500">EMP-0428</span>
+            <span className="text-[10px] font-mono text-slate-500">
+              {role === 'manager' ? 'MGR-0102' : role === 'hr' ? 'HR-0034' : 'EMP-0428'}
+            </span>
           </div>
           <button 
             onClick={() => navigate(`/corporate/login`)}

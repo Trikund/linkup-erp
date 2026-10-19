@@ -98,6 +98,23 @@ import { EmployeeAssets } from './pages/corporate/employee/EmployeeAssets';
 import { EmployeeHelp } from './pages/corporate/employee/EmployeeHelp';
 import { EmployeeProfile } from './pages/corporate/employee/EmployeeProfile';
 import { ManagerDashboard } from './pages/corporate/manager/ManagerDashboard';
+import { ManagerTeam } from './pages/corporate/manager/ManagerTeam';
+import { ManagerAttendance } from './pages/corporate/manager/ManagerAttendance';
+import { ManagerLeave } from './pages/corporate/manager/ManagerLeave';
+import { ManagerTasks } from './pages/corporate/manager/ManagerTasks';
+import { ManagerProjects } from './pages/corporate/manager/ManagerProjects';
+import { ManagerTimesheets } from './pages/corporate/manager/ManagerTimesheets';
+import { ManagerExpenses } from './pages/corporate/manager/ManagerExpenses';
+import { ManagerBudgets } from './pages/corporate/manager/ManagerBudgets';
+import { ManagerCompensation } from './pages/corporate/manager/ManagerCompensation';
+import { ManagerOkrs } from './pages/corporate/manager/ManagerOkrs';
+import { ManagerPerformance } from './pages/corporate/manager/ManagerPerformance';
+import { ManagerOneOnOne } from './pages/corporate/manager/ManagerOneOnOne';
+import { ManagerHiring } from './pages/corporate/manager/ManagerHiring';
+import { ManagerReports } from './pages/corporate/manager/ManagerReports';
+import { ManagerCompliance } from './pages/corporate/manager/ManagerCompliance';
+import { ManagerHelp } from './pages/corporate/manager/ManagerHelp';
+import { ManagerProfile } from './pages/corporate/manager/ManagerProfile';
 import { HrDashboard } from './pages/corporate/hr/HrDashboard';
 import { AdminDashboard as CorporateAdminDashboard } from './pages/corporate/admin/AdminDashboard';
 import { PlaceholderCorporate } from './pages/corporate/PlaceholderCorporate';
@@ -378,6 +395,23 @@ function App() {
         
         <Route path="/corporate/manager" element={<Navigate to="/corporate/manager/dashboard" replace />} />
         <Route path="/corporate/manager/dashboard" element={<ManagerDashboard />} />
+        <Route path="/corporate/manager/team" element={<ManagerTeam />} />
+        <Route path="/corporate/manager/attendance" element={<ManagerAttendance />} />
+        <Route path="/corporate/manager/leave" element={<ManagerLeave />} />
+        <Route path="/corporate/manager/tasks" element={<ManagerTasks />} />
+        <Route path="/corporate/manager/projects" element={<ManagerProjects />} />
+        <Route path="/corporate/manager/timesheets" element={<ManagerTimesheets />} />
+        <Route path="/corporate/manager/expenses" element={<ManagerExpenses />} />
+        <Route path="/corporate/manager/budgets" element={<ManagerBudgets />} />
+        <Route path="/corporate/manager/compensation" element={<ManagerCompensation />} />
+        <Route path="/corporate/manager/okrs" element={<ManagerOkrs />} />
+        <Route path="/corporate/manager/performance" element={<ManagerPerformance />} />
+        <Route path="/corporate/manager/one-on-one" element={<ManagerOneOnOne />} />
+        <Route path="/corporate/manager/hiring" element={<ManagerHiring />} />
+        <Route path="/corporate/manager/reports" element={<ManagerReports />} />
+        <Route path="/corporate/manager/compliance" element={<ManagerCompliance />} />
+        <Route path="/corporate/manager/help" element={<ManagerHelp />} />
+        <Route path="/corporate/manager/profile" element={<ManagerProfile />} />
         <Route path="/corporate/manager/*" element={<PlaceholderCorporate role="manager" />} />
         
         <Route path="/corporate/hr" element={<Navigate to="/corporate/hr/dashboard" replace />} />
